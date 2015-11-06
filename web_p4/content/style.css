@@ -1,0 +1,118 @@
+/* background-grey: #EFEFEF */
+
+
+header {
+	display: block;
+	background-color: #FFFFFF; 
+} 
+
+section {
+	background-color: #EFEFEF; /*#F8F8F8;*/
+	border-top-right-radius: 40px; 
+}
+
+footer {
+	background-color: #EFEFEF;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	padding-top: 1%;
+	padding-left: 1%;
+}
+
+body { 
+	background-color:#FFFFFF; 
+	margin-left: auto;
+	margin-right: auto;
+	width: 65%;
+}
+
+h1 { 
+	color: black;
+}
+
+h2 {
+	color: grey;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+    /*background-color: black;*/
+}
+
+a:hover {
+    color: #ADFF2F;
+}
+
+.form {
+	width: 40%;
+}
+
+.alert {
+	color: #FF6E6E;
+}
+
+#mainNav li {
+	display: inline; 
+	padding-right: 10px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+li+li {
+	border-left: 2px solid grey;
+}
+
+#mainNav {
+	background-color: #424242;
+	color: white;
+	width: 60%;
+	border-top-left-radius: 10px;
+}
+
+#navButton1 {
+	color: #FCFCFC;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 110%;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+#divideSection {
+	width: 30%;
+	border-bottom: 1px solid #000000;
+}
+
+#subSection2 {
+	padding-left: 1%;
+}
+
+#subSection1 {
+	padding-left: 1%;
+	padding-top: 5px;
+}
+
+#table1 {
+	width: 25%;
+}
+
+#verticalLineLeft {
+	border-left: 1px solid #000000;
+}
+
+/*
+#footerBottomLine {
+	margin-left: auto;
+	width: 40%;
+	border-bottom: 1px solid #000000;
+}
+*/
+
+
+tr.attendendee:hover, .selected {
+	background-color: #ADFF2F;
+	cursor: pointer;
+}
+
+

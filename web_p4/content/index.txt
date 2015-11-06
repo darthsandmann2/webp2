@@ -1,0 +1,82 @@
+## -*- coding: utf-8 -*-
+<%!
+	import os
+	import json
+	import cherrypy
+%>
+
+<!DOCTYPE html> 
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			Absolventenfeier
+		</title>
+		<link rel="stylesheet" type="text/css" href="./style.css"></link>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="./js/select.js"></script>
+	</head>
+<body>
+	<header>
+		<h1 id="mainHeadline">Absolventenfeier Informatik</h1>
+	</header>
+	<nav id="mainNav">
+		<a href="./registration_form" id="navButton1">Registrieren</a>
+	</nav>	
+	<div id="verticalLineLeft">
+	<section>
+		<div id="subSection1">
+			<p>
+			Auf dieser Website wird die diesjährige Absolventenfeier des Studiengangs Informatik organisiert.
+		
+			<table id="table1">
+				<tr>
+					<td>Wann?</td>
+					<td>15.07.2014</td>
+				</tr>
+				<tr>
+					<td>Beginnt um:</td>
+					<td>15:00 Uhr</td>
+				</tr>
+				<tr>
+					<td>Wo?          </td>
+					<td>Audimax</td>
+				</tr>
+			</table>
+			<p>
+			In der untenstehenden Liste sind die bisher angemeldeten Teilnehmer einzusehen. Möchten Sie sich zu dieser Absolventenfeier verbindlich anmelden, nutzen Sie bitte
+			den obigen Schalter <i>Registrieren</i>.
+			<p>
+			Möchten Sie eine bestehende Anmeldung bearbeiten oder löschen, können Sie ihren Namen in der Teilnehmerliste unten selektieren und dann auf den Schalter
+			<i>Bearbeiten</i> drücken.
+			<p>
+		</div>
+		<div id="divideSection"></div>
+		<div id="subSection2">
+			<h2>Teilnehmerliste:</h2>
+			
+			<table id="table2">
+			% for filename in os.listdir('./data'):
+				<%
+					json_data = open( "./data/%s" % filename )
+					data = json.load( json_data )
+				%>
+				<tr class="attendendee">
+					<td onclick='SelectRow( ${data['ID']} )' id="${data['ID']}">${data['vorname']} ${data['nachname']}</td>
+				</tr>
+				<%
+					json_data.close()
+				%>
+			% endfor
+			</table>
+			<p>
+			<button type="button" onclick="GetEditForm()">Bearbeiten</button>
+		</div>
+	</section>
+	</div>
+	<footer>
+		Verantwortlich für diese Seite: Philipp<p>
+		Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.
+		<div id="footerBottomLine"><div>
+	</footer> 
+</html>

@@ -1,0 +1,80 @@
+## -*- coding: utf-8 -*-
+<%!
+	import os
+	import json
+	import cherrypy
+%>
+
+<!DOCTYPE html> 
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Anmeldung bearbeiten</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+<body>
+	<header>
+		<h1>Bearbeitungsformular der eigenen Anmeldung</h1>
+	</header>
+	<section>
+		<div id="subSection2">
+		<h3 class="alert">
+			Information: Name, Vorname und Kennwort sind unveränderbar. 
+			Die mit '*' markierten Felder müssen ausgefüllt werden!
+		</h3>
+		<form name="EditForm" action="save" method="post">
+		<table class="form">
+			<%	
+				json_data = open( "./data/%s.json" % ID  )
+				data = json.load( json_data )
+			%>
+			<tr>
+				<td>Vorname<span class="alert">*</span>:</td>
+				<td><input type="text" name="vorname" value="${data['vorname']}" placeholder="Vorname" required></td>
+			</tr>
+				<tr>
+				<td>Nachname<span class="alert">*</span>:</td>
+				<td><input type="text" name="nachname" value="${data['nachname']}" placeholder="Nachname" required></td>
+			</tr>
+			<tr>
+				<td>Anzahl Begleitpersonen:</td> 
+				<td><select name="begleitpersonen" >
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Studiengang:</td>
+				<td><input type="text" name="studiengang" placeholder="z.B Informatik B.Sc" required></td>
+			</tr>
+			<tr>
+				<td>Betreuer:</td>
+				<td><input type="text" name="betreuer" placeholder="Name des Betreuers" required></td>
+			</tr>
+			<tr>
+				<td>Kennwort<span class="alert">*</span>:</td>
+				<td><input type="password" name="passwort" placeholder="Kennwort" required></td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="loeschen" value="yes">Meine Anmeldung loeschen!</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><input type="hidden" name="ID" value="${ID}"></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Speichern!"></td>
+			</tr>
+	</table>
+	</form>
+	<p>
+	<form action="./index" method="get">
+		<button>Abbrechen</button>
+	</form>
+	</div>
+</html> 
