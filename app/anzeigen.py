@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os.path
 
 from mako.template import Template

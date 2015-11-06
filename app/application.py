@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import cherrypy
 from app import datenbank
 from app import anzeigen
