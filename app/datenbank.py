@@ -57,7 +57,7 @@ class datenbank_db(object):
 ## --------------------------------------------------------------------##
 ## Diskussionen
 ## --------------------------------------------------------------------##
-	def erstellen_diskussion_db(self, thema, diskussion, titel, inhalt):
+	def erstellen_diskussion_db(self, thema, diskussion, titel, inhalt, username):
 		# diskussion.json:
 		#	vorhandene .json beiträge (id)
 		#	username
@@ -65,9 +65,42 @@ class datenbank_db(object):
 		#	zeitpunkt
 		#	titel
 		#	inhalt
+                inhalt_json = {
+			'username': username,
+			'inhalt': inhalt,
+			'thema': thema,
+			'diskussion': diskussion,
+			'zeit': zeit,
+                        'beitraege': {}
+		}
+                datei = codecs.open(os.path.join('data',thema, diskussion, '1.json'), 'w', 'utf-8')
+                datei.write(json.dumps(inhalt_json, indent=3, ensure_ascii=True))
+		datei.close()
+
+        def erstellen_beitrag_db(self, thema, diskussion, titel, inhalt, username):       
+                inhalt_json = {
+			'username': username,
+			'inhalt': inhalt,
+			'thema': thema,
+			'diskussion': diskussion,
+			'zeit': zeit
+		}
+                datei = codecs.open(os.path.join('data',thema, diskussion, beitrag+'.json'), 'w', 'utf-8')
+                datei.write(inhalt_json)    
 	
-	def lesen_diskussion_db(self, thema, diskussion):
+        def lesen_diskussion_db(self, thema, diskussion):
 		# diskussion.json auslesen:
 		#	welche dateien müssen gelesen werden
-		#	erster post
+        	#	erster post
 		# weitere posts .json dateien auslesen
+                datei = open(os.path.join('data', thema, diskussion, '1.json'), 'r+')
+                temp = datei.read()
+                beitraege = temp[beitraege] // ?
+                for i in beitraege:
+                        ausgabe[i] = lesen.beitrag(beitraege[i])
+                return ausgabe
+
+        def lesen_beitrag_db(self, thema, diskussion, beitrag):
+                datei = open(os.path.join('data', thema, diskussion, '1.json'), 'r+')
+                temp = datei.read()
+                return temp
