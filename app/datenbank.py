@@ -4,6 +4,7 @@ import os
 import os.path
 import codecs
 import json
+import time
 
 
 class datenbank_db(object):
@@ -57,7 +58,7 @@ class datenbank_db(object):
 ## --------------------------------------------------------------------##
 ## Diskussionen
 ## --------------------------------------------------------------------##
-	def erstellen_diskussion_db(self, thema, diskussion, titel, inhalt, username):
+	def erstellen_hauptbeitrag_db(self, thema, diskussion, titel, inhalt, username):
 		# diskussion.json:
 		#	vorhandene .json beiträge (id)
 		#	username
@@ -65,6 +66,7 @@ class datenbank_db(object):
 		#	zeitpunkt
 		#	titel
 		#	inhalt
+                zeit = time.strftime("%H:%M:%S")               
                 inhalt_json = {
 			'username': username,
 			'inhalt': inhalt,
@@ -78,6 +80,9 @@ class datenbank_db(object):
 		datei.close()
 
         def erstellen_beitrag_db(self, thema, diskussion, titel, inhalt, username):       
+                # Fehlt:
+                #       beiträge aus Beitrag 1 auslesen und neuen Eintrag hinzufügen                
+                zeit = time.strftime("%H:%M:%S")                
                 inhalt_json = {
 			'username': username,
 			'inhalt': inhalt,
@@ -88,14 +93,14 @@ class datenbank_db(object):
                 datei = codecs.open(os.path.join('data',thema, diskussion, beitrag+'.json'), 'w', 'utf-8')
                 datei.write(inhalt_json)    
 	
-        def lesen_diskussion_db(self, thema, diskussion):
+        def lesen_beitraege_db(self, thema, diskussion):
 		# diskussion.json auslesen:
 		#	welche dateien müssen gelesen werden
         	#	erster post
 		# weitere posts .json dateien auslesen
                 datei = open(os.path.join('data', thema, diskussion, '1.json'), 'r+')
                 temp = datei.read()
-                beitraege = temp[beitraege] // ?
+                beitraege = temp["beitraege"] // ??
                 for i in beitraege:
                         ausgabe[i] = lesen.beitrag(beitraege[i])
                 return ausgabe

@@ -14,17 +14,40 @@ class programm(object):
 
 
 ## --------------------------------------------------------------------##	
-## Startseite erzeugen und anzeigen
+## Zugriffe
 ## --------------------------------------------------------------------##	
 	def index(self):
-		return self.erzeugen_anzeigen_app()
-		
+		return self.erzeugen_foren_app()	
 	index.exposed = True
-	
-	
-	def erzeugen_anzeigen_app(self):
-		content = self.datenbank_py.lesen_json_db()
-		return self.anzeigen_py.erzeugen_anzeigen_az(content)
+
+
+	def themen(self, id):
+		return self.erzeugen_themen_app()	
+	themen.exposed = True
+
+
+        def beitraege(self, id):
+                return self.erzeugen_beitraege_app()
+        themen.exposed = True        
+## --------------------------------------------------------------------##	
+        
+
+
+## --------------------------------------------------------------------##	
+## Webpages verarbeiten
+## --------------------------------------------------------------------##        
+
+	def erzeugen_foren_app(self):
+		content = self.datenbank_py.lesen_themavz_db()
+		return self.anzeigen_py.erzeugen_foren_az(content)
+
+	def erzeugen_themen_app(self):
+		content = self.datenbank_py.lesen_diskussionvz_db()
+		return self.anzeigen_py.erzeugen_themen_az(content)
+
+	def erzeugen_beitraege_app(self):
+		content = self.datenbank_py.lesen_beitraege_db()
+		return self.anzeigen_py.erzeugen_beitraege_az(content)
 ## --------------------------------------------------------------------##
 
 
