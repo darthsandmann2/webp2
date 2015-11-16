@@ -1,0 +1,116 @@
+{
+        "groupes":
+        [{
+            "id": "1",
+            "name": "Student"
+        }, {
+            "id": "2",
+            "name": "Pruefungsbuero"
+        }, {
+            "id": "3",
+            "name": "Pruefer"
+        }, {
+            "id": "4",
+            "name": "Vorsitzender Pruefungsausschuss"
+        }],
+        "workorders":
+        [{
+            "name": "workorderA",
+            "id": "1",
+            "groupes":
+        [{
+            "id": "1",
+            "name": "Student"
+        }, {
+            "id": "2",
+            "name": "Pruefungsbuero"
+        }, {
+            "id": "3",
+            "name": "Pruefer"
+        }, {
+            "id": "4",
+            "name": "Vorsitzender Pruefungsausschuss"
+        }],
+            "elemente": [{
+                "zeile": "1",
+                "name": "Start",
+                "typ": "start",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last": ""
+            
+            }, {
+                "zeile": "3",
+                "name": "JaOderNein",
+                "typ": "condition",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last": ""
+            }, {
+                "zeile": "2",
+                "name": "Name",
+                "typ": "activity",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last":""
+            }, {
+                "zeile": "4",
+                "name": "Ende",
+                "typ": "end",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last":""
+            }]
+
+        }, {
+            "name": "workorderB",
+            "id": "JaOderNein",
+            "elemente": [{
+                "zeile": "1",
+                "name": "Start",
+                "typ": "start",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last": ""
+
+            }, {
+                "zeile": "3",
+                "name": "JaOderNein",
+                "typ": "condition",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last": ""
+            }, {
+                "zeile": "2",
+                "name": "Name",
+                "typ": "activity",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last": ""
+            }, {
+                "zeile": "4",
+                "name": "Ende",
+                "typ": "end",
+                "owner": "1",
+                "value": "",
+                "next1": "",
+                "next2": "",
+                "last": ""
+            }]
+        }
+        ]
+    }
