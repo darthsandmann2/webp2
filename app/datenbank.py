@@ -5,6 +5,7 @@ import os.path
 import codecs
 import json
 import time
+import shutil
 
 
 class datenbank_db(object):
@@ -29,6 +30,8 @@ class datenbank_db(object):
 			if os.path.isdir(os.path.join(pfad, f)):
 				thema_dict[i] = f
 				i = i+1
+		if i == 1:
+			thema_dict['keine'] = 'keine'
 		print (thema_dict)
 		return thema_dict
 			
@@ -64,6 +67,14 @@ class datenbank_db(object):
 		pfad = os.path.join('data', thema, diskussion)
 		if not os.path.exists(pfad):
 			os.mkdir(os.path.join('data', thema, diskussion))
+			
+	def loeschen_themavz_db(self, thema):
+		pfad = os.path.join('data', thema)
+		shutil.rmtree(pfad)
+		
+	def loeschen_diskussionvz_db(self, thema, diskussion):
+		pfad = os.path.join('data', thema, diskussion)
+		shutil.rmtree(pfad)
 ## --------------------------------------------------------------------##
 
 

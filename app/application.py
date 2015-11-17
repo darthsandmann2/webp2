@@ -35,10 +35,20 @@ class programm(object):
 	themen_neu.exposed = True
 	
 	def diskussion_neu(self, **content):
-		thema_var = content["thema"]
-		diskussion_var = content["diskussion"]
-		return self.content_diskussion_neu_app(thema_var, diskussion_var)
+		thema = content["thema"]
+		diskussion = content["diskussion"]
+		return self.content_diskussion_neu_app(thema, diskussion)
 	diskussion_neu.exposed = True
+	
+	def themen_loeschen(self, thema):
+		return self.content_themen_loeschen_app(thema)
+	themen_loeschen.exposed = True
+	
+	def diskussion_loeschen(self, **content):
+		thema = content["thema"]
+		diskussion = content["diskussion"]
+		return self.content_diskussion_loeschen_app(thema, diskussion)
+	diskussion_loeschen.exposed = True
 ## --------------------------------------------------------------------##
 
 
@@ -47,19 +57,6 @@ class programm(object):
 ## Webpages verarbeiten
 ## --------------------------------------------------------------------##
 	def erzeugen_foren_app(self):
-		## testerzeugung
-		self.datenbank_py.erstellen_themavz_db("test1")
-		self.datenbank_py.erstellen_themavz_db("test2")
-		self.datenbank_py.erstellen_themavz_db("test3")
-		self.datenbank_py.erstellen_diskussionvz_db("test1", "beitrag1")
-		self.datenbank_py.erstellen_diskussionvz_db("test1", "beitrag2")
-		self.datenbank_py.erstellen_diskussionvz_db("test1", "beitrag3")
-		self.datenbank_py.erstellen_diskussionvz_db("test3", "beitrag1")
-		self.datenbank_py.erstellen_diskussionvz_db("test3", "beitrag2")
-		self.datenbank_py.erstellen_diskussionvz_db("test2", "beitrag1")
-		self.datenbank_py.erstellen_diskussionvz_db("test2", "beitrag2")
-		## ----------- ##
-		
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)
 
@@ -84,6 +81,16 @@ class programm(object):
 		
 	def content_diskussion_neu_app(self, thema, diskussion):
 		self.datenbank_py.erstellen_diskussionvz_db(thema, diskussion)
+		content = self.datenbank_py.lesen_diskussionvz_db(thema)
+		return self.anzeigen_py.erzeugen_themen_az(content)
+		
+	def content_themen_loeschen_app(self, thema):
+		self.datenbank_py.loeschen_themavz_db(thema)
+		content = self.datenbank_py.lesen_themavz_db()
+		return self.anzeigen_py.erzeugen_foren_az(content)
+		
+	def content_diskussion_loeschen_app(self, thema, diskussion):
+		self.datenbank_py.loeschen_diskussionvz_db(thema, diskussion)
 		content = self.datenbank_py.lesen_diskussionvz_db(thema)
 		return self.anzeigen_py.erzeugen_themen_az(content)
 ## --------------------------------------------------------------------##
