@@ -82,56 +82,40 @@ class datenbank_db(object):
 ## --------------------------------------------------------------------##
 ## Diskussionen
 ## --------------------------------------------------------------------##
-	def erstellen_hauptbeitrag_db(self, thema, diskussion, titel, inhalt, username):
-		# diskussion.json:
-		#	vorhandene .json beitraege (id)
-		#	username
-		#	Bearbeiter
-		#	zeitpunkt
-		#	titel
-		#	inhalt
-		zeit = time.strftime("%H:%M:%S")               
-		inhalt_json = {
-			'username': username,
-			'inhalt': inhalt,
-			'thema': thema,
-			'diskussion': diskussion,
-			'zeit': zeit,
-			'beitraege': {}
-			}
-		datei = codecs.open(os.path.join('data',thema, diskussion, '1.json'), 'w', 'utf-8')
-		datei.write(json.dumps(inhalt_json, indent=3, ensure_ascii=True))
-		datei.close()
-
-	def erstellen_beitrag_db(self, thema, diskussion, titel, inhalt, username):       
-		# Fehlt:
-		#       beitraege aus Beitrag 1 auslesen und neuen Eintrag hinzufuegen                
+	def erstellen_beitrag_db(self, thema, diskussion, username, inhalt):
+		id = 0
+		id_var = 0
+		pfad = os.path.join('data', thema, diskussion)
 		zeit = time.strftime("%H:%M:%S")                
 		inhalt_json = {
 			'username': username,
+			'titel': diskussion,
 			'inhalt': inhalt,
 			'thema': thema,
-			'diskussion': diskussion,
 			'zeit': zeit
 		}
-		datei = codecs.open(os.path.join('data',thema, diskussion, beitrag+'.json'), 'w', 'utf-8')
-		datei.write(inhalt_json)    
+		ordner = os.listdir(pfad)
+		for dateiname in ordner:
+			if dateiname.endswith('.json'):
+				id_int = int(dateiname[:-5])
+				if id_int > id:
+					id = id_int
+		id_str = str(id) + '.json'
+		datei = codecs.open(os.path.join('data',thema, diskussion, id_str), 'w', 'utf-8')
+		datei.write(json.dumps(inhalt_json, indent=3, ensure_ascii=True))
+		datei.close()   
 	
 	def lesen_beitraege_db(self, thema, diskussion):
-		# diskussion.json auslesen:
-		#	welche dateien muessen gelesen werden
-		#	erster post
-		# weitere posts .json dateien auslesen
-		datei = open(os.path.join('data', thema, diskussion, '1.json'), 'r+')
-		temp = datei.read()
-		beitraege = temp["beitraege"] ## ??
-		for i in beitraege:
-			ausgabe[i] = lesen.beitrag(beitraege[i])
-		return ausgabe
-
-	def lesen_beitrag_db(self, thema, diskussion, beitrag):
-		datei = open(os.path.join('data', thema, diskussion, '1.json'), 'r+')
-		temp = datei.read()
-		return temp
+		beitraege = {}
+		pfad = os.path.join('data', thema, diskussion)
+		ordner = os.listdir(pfad)
+		for dateiname in ordner:
+			if dateiname.endswith('.json'):
+				datei = codecs.open(os.path.join('data', thema, diskussion, dateiname), 'rU', 'utf-8')
+				id = dateiname[:-5]
+				dateiinhalt = datei.read()
+				beitraege[id] = {}
+				beitraege[id] = json.loads(dateiinhalt)
+		return beitraege
 ## --------------------------------------------------------------------##		
 #EOF

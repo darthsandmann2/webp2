@@ -37,7 +37,9 @@ class programm(object):
 	def diskussion_neu(self, **content):
 		thema = content["thema"]
 		diskussion = content["diskussion"]
-		return self.content_diskussion_neu_app(thema, diskussion)
+		username = content["username"]
+		inhalt = content["inhalt"]
+		return self.content_diskussion_neu_app(thema, diskussion, username, inhalt)
 	diskussion_neu.exposed = True
 	
 	def themen_loeschen(self, thema):
@@ -79,10 +81,11 @@ class programm(object):
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)
 		
-	def content_diskussion_neu_app(self, thema, diskussion):
+	def content_diskussion_neu_app(self, thema, diskussion, username, inhalt):
 		self.datenbank_py.erstellen_diskussionvz_db(thema, diskussion)
-		content = self.datenbank_py.lesen_diskussionvz_db(thema)
-		return self.anzeigen_py.erzeugen_themen_az(content)
+		self.datenbank_py.erstellen_beitrag_db(thema, diskussion, username, inhalt)
+		content = self.datenbank_py.lesen_beitraege_db(thema, diskussion)
+		return self.anzeigen_py.erzeugen_beitraege_az(content)
 		
 	def content_themen_loeschen_app(self, thema):
 		self.datenbank_py.loeschen_themavz_db(thema)

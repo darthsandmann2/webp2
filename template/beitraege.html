@@ -18,20 +18,25 @@
 					<table>
 						<th>Diskussionen</th>
 							<tr>
-							<tr></tr>
 							% for var in content:
 								<tr id=${var}>
 									<td>
-										<td><a href="/beitraege/${content[var]['Thema']}/${content[var]['Diskussion']}">${content[var]['Diskussion']}</a></td>
+										<td>${content[var]['username']}</td>
+										<td>${content[var]['zeit']}</td>
+										<td>
+											<form method="post" action="/beitrag_loeschen" class="form">
+												<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
+												<input type="hidden" value="${content[var]['Diskussion']}" name="diskussion"></input>
+												<input type="submit" value="X"></input>
+											</form>
+										</td>
 									</td>	
-									<td>
-										<form method="post" action="/diskussion_loeschen" class="form">
-											<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
-											<input type="hidden" value="${content[var]['Diskussion']}" name="diskussion"></input>
-											<input type="submit" value="X"></input>
-										</form>
-									</td>
 								</tr>
+								<tr>									
+									<td>
+										<td>${content[var]['inhalt']}</td>
+									</td>
+								</tr>	
 							% endfor
 					</table>
 				</div>
@@ -41,7 +46,7 @@
 				<form method="post" action="/diskussion_neu" class="form">
 					<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
 					<input type="text" value="Username" name="username"></input>
-					<input type="text" value="Titel" name="diskussion"></input>
+					<input type="hidden" value=""${content[var]['Diskussion']}" name="diskussion"></input>
 					<input type="text" value="Inhalt" name="inhalt"></input>
 					<input type="submit" value="Neu"></input>
 				</form>
