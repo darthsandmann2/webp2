@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 	<head>
 		<title>Forum XY</title>  
 		<link rel="stylesheet" type="text/css" href="style2.css">
@@ -19,13 +19,13 @@
 					<th>Themen</th>
 						<tr>
 						<tr></tr>
-						% for i in content_var:
+						% for var in content:
 						<tr id=${var}>
 							<td>
-								<td>${content[i]}</td>
+								<td>${content[var]}</td>
 							</td>
 						</tr>
-						% endfor -->			
+						% endfor			
 				</table>
 			</div>
 		</div>

@@ -64,7 +64,6 @@ class datenbank_db(object):
 		i = 1
 		for f in os.listdir(pfad):
 			if os.path.isdir(os.path.join(pfad, f)):
-				thema_dict['Anzahl'] = i
 				thema_dict[i] = f
 				i = i+1
 		print (thema_dict)
