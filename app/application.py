@@ -21,14 +21,24 @@ class programm(object):
 	index.exposed = True
 
 
-	def themen(self, id):
-		return self.erzeugen_themen_app(id)
+	def themen(self, thema):
+		return self.erzeugen_themen_app(thema)
 	themen.exposed = True
 
 
-	def beitraege(self, id):
-		return self.erzeugen_beitraege_app()
-	themen.exposed = True
+	def beitraege(self, thema, diskussion):
+		return self.erzeugen_beitraege_app(thema, diskussion)
+	beitraege.exposed = True
+	
+	def themen_neu(self, thema):
+		return self.content_themen_neu_app(thema)
+	themen_neu.exposed = True
+	
+	def diskussion_neu(self, **content):
+		thema_var = content["thema"]
+		diskussion_var = content["diskussion"]
+		return self.content_diskussion_neu_app(thema_var, diskussion_var)
+	diskussion_neu.exposed = True
 ## --------------------------------------------------------------------##
 
 
@@ -53,13 +63,29 @@ class programm(object):
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)
 
-	def erzeugen_themen_app(self, id):
-		content = self.datenbank_py.lesen_diskussionvz_db(id)
+	def erzeugen_themen_app(self, thema):
+		content = self.datenbank_py.lesen_diskussionvz_db(thema)
 		return self.anzeigen_py.erzeugen_themen_az(content)
 
-	def erzeugen_beitraege_app(self):
-		content = self.datenbank_py.lesen_beitraege_db()
+	def erzeugen_beitraege_app(self, thema, diskussion):
+		content = self.datenbank_py.lesen_beitraege_db(thema, diskussion)
 		return self.anzeigen_py.erzeugen_beitraege_az(content)
+## --------------------------------------------------------------------##
+
+
+
+## --------------------------------------------------------------------##
+## Content verarbeiten
+## --------------------------------------------------------------------##
+	def content_themen_neu_app(self, thema):
+		self.datenbank_py.erstellen_themavz_db(thema)
+		content = self.datenbank_py.lesen_themavz_db()
+		return self.anzeigen_py.erzeugen_foren_az(content)
+		
+	def content_diskussion_neu_app(self, thema, diskussion):
+		self.datenbank_py.erstellen_diskussionvz_db(thema, diskussion)
+		content = self.datenbank_py.lesen_diskussionvz_db(thema)
+		return self.anzeigen_py.erzeugen_themen_az(content)
 ## --------------------------------------------------------------------##
 
 

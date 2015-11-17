@@ -17,18 +17,8 @@ class datenbank_db(object):
 
 
 ## --------------------------------------------------------------------##
-## Verzeichnisverwaltung
+## Verzeichnis auslesen
 ## --------------------------------------------------------------------##
-	def erstellen_themavz_db(self, thema):
-		pfad = os.path.join('data', thema)
-		if not os.path.exists(pfad):
-			os.mkdir(os.path.join('data', thema))
-			
-	def erstellen_diskussionvz_db(self, thema, diskussion):
-		pfad = os.path.join('data', thema, diskussion)
-		if not os.path.exists(pfad):
-			os.mkdir(os.path.join('data', thema, diskussion))
-		
 	def lesen_themavz_db(self):
 		thema_dict = {}
 		pfad = os.path.join('data')
@@ -48,10 +38,32 @@ class datenbank_db(object):
 		i = 1
 		for f in os.listdir(pfad):
 			if os.path.isdir(os.path.join(pfad, f)):
-				diskussion_dict[i] = f
+				diskussion_dict[f] = {}
+				diskussion_dict[f]['Diskussion'] = f
+				diskussion_dict[f]['Thema'] = thema
 				i = i+1
+		if i == 1:
+			diskussion_dict['keine'] = {}
+			diskussion_dict['keine']['Thema'] = thema
+			diskussion_dict['keine']['Diskussion'] = "keine"
 		print (diskussion_dict)
 		return diskussion_dict
+## --------------------------------------------------------------------##
+		
+
+		
+## --------------------------------------------------------------------##
+## Verzeichnis verwalten
+## --------------------------------------------------------------------##
+	def erstellen_themavz_db(self, thema):
+		pfad = os.path.join('data', thema)
+		if not os.path.exists(pfad):
+			os.mkdir(os.path.join('data', thema))
+			
+	def erstellen_diskussionvz_db(self, thema, diskussion):
+		pfad = os.path.join('data', thema, diskussion)
+		if not os.path.exists(pfad):
+			os.mkdir(os.path.join('data', thema, diskussion))
 ## --------------------------------------------------------------------##
 
 
@@ -110,5 +122,5 @@ class datenbank_db(object):
 		datei = open(os.path.join('data', thema, diskussion, '1.json'), 'r+')
 		temp = datei.read()
 		return temp
-		
+## --------------------------------------------------------------------##		
 #EOF

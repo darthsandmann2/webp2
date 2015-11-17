@@ -24,10 +24,23 @@
 								<td>
 									<td><a href="/themen/${content[var]}">${content[var]}</a></td>
 								</td>
+								<td>
+									<form method="post" action="/thema_loeschen" class="form">
+										<input type="hidden" value="${content[var]}" name="thema"></input>
+										<input type="submit" value="X"></input>
+									</form>
+								</td>
 							</tr>
 							% endfor			
 					</table>
 				</div>
+				
+				Neuer Eintrag
+				
+					<form method="post" action="/themen_neu" class="form">
+					<input type="text" value="" name="thema"</input>
+					<input type="submit" value="Neu"></input>
+					</form>
 			</div>
 		</div>
 	</body>
