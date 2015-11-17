@@ -1,32 +1,35 @@
 ﻿<html>
 	<head>
 		<title>Forum XY</title>  
-		<link rel="stylesheet" type="text/css" href="css/style2.css">
+		<link rel="stylesheet" type="text/css" href="/css/style2.css">
+		<style type="text/css">
+			@import url("/template/css/style2.css");
 		<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
 	</head>
 
 	<body>
 		<div id="main">
 
-		<div class="top">
-			 Themenuebersicht
-		</div> 
+			<div class="top">
+				 Themenuebersicht
+			</div> 
 
-		<div class="content">
+			<div class="content">
 
-			<div id="themen">
-				<table>
-					<th>Themen</th>
-						<tr>
-						<tr></tr>
-						% for var in content:
-						<tr id=${var}>
-							<td>
-								<td>${content[var]}</td>
-							</td>
-						</tr>
-						% endfor			
-				</table>
+				<div id="themen">
+					<table>
+						<th>Themen</th>
+							<tr>
+							<tr></tr>
+							% for var in content:
+							<tr id=${var}>
+								<td>
+									<td>${content[var]}</td>
+								</td>
+							</tr>
+							% endfor			
+					</table>
+				</div>
 			</div>
 		</div>
 	</body>
