@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Forum XY</title>  
+		<link rel="stylesheet" type="text/css" href="style2.css">
+		<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main">
+
+		<div class="top">
+			 Themenuebersicht
+		</div> 
+
+		<div class="content">
+
+			<div id="themen">
+				<table>
+					<th>Themen</th>
+						<tr>
+						<tr></tr>
+						% for i in content_var:
+						<tr id=${var}>
+							<td>
+								<td>${content[i]}</td>
+							</td>
+						</tr>
+						% endfor -->			
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
