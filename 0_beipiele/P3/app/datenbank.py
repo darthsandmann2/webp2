@@ -81,7 +81,7 @@ class datenbank_db(object):
 		datei.seek(0)
 		datei.write(id)
 		datei.close()
-
+	
 
 	def lesen_aktuell_db(self,id):
 		datei = open(os.path.join('data', 'aktuell.json'), 'r+')

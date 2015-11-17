@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="dokumentation-praktikum-2">Dokumentation: Praktikum 2</h1>
+<h2 id="allgemeine-beschreibung-der-lösung">Allgemeine Beschreibung der Lösung</h2>
+<p>Das Praktikum 2 ist in <em>Python</em> geschrieben und nutzt das Framework <em>CherryPy</em>, mit welchem eine Website zur Verwendung erzeugt wird.</p>
+<p>Dieser Server läuft mit einer Datenbank, welche Informationen via des Python-Moduls <em>json</em> in Dateien abspeichern und auslesen kann.</p>
+<p>Die Website wird durch ein Template erzeugt, welches durch die Template-Engine <em>mako</em> umgesetzt wird, wodurch Daten aus der Datenbank ausgeben werden können.</p>
+<h2 id="beschreibung-der-komponenten">Beschreibung der Komponenten</h2>
+<h3 id="zweck">Zweck</h3>
+<p>Die Website stellt den Inhalt einer Absolventenfeier dar. Es besteht die Möglichkeit sich für diese anzumelden, mit der Option sich auch wieder abzumelden. Dieser Prozess wird durch ein Passwort geschützt, welches der Benutzer selber wählen kann. Die Daten die eingeben wurden, können jederzeit geändert werden, es muss jedoch das Passwort eingeben werden.</p>
+<h3 id="aufbau">Aufbau</h3>
+<p><strong>server.py</strong></p>
+<p>Die <em>server.py</em> hat die Aufgabe die Website bereitzustellen und nutzt hierfür das <em>CherryPy-Framework</em>, sowie die folgenden Module.</p>
+<p><strong>application.py</strong></p>
+<p>Die <em>application.py</em> leitet Anfragen, die durch die Website, welche durch das <em>CherryPy-Framework</em> erzeugt wurde, an die anderen Module weiter.</p>
+<p><strong>datenbank.py</strong></p>
+<p>Die <em>datenbank.py</em> stellt den Speicher des Systems dar. Sie dient als Schnittstelle, um Daten abzuspeichern, verändern, oder zu löschen.</p>
+<p><strong>anzeigen.py</strong></p>
+<p>Die <em>anzeigen.py</em> generiert die Templates, welche benötigt werden, um die Informationen auf der Website anzuzeigen. Um dies zu ermöglichen wird die <em>mako-Engine</em> verwendet.</p>
+<h3 id="zusammenwirken-der-komponenten">Zusammenwirken der Komponenten</h3>
+<p>Durch die <em>server.py</em> werden die Anfragen durch das <em>CherryPy-Framework</em> erkannt und weitergeleitet an die <em>application.py</em> Die <em>application.py</em> verarbeitet die Anfragen und gibt Anweisungen an die <em>datenbank.py</em> und <em>anzeigen.py</em> was mit diesen geschehen soll. Im folgenden werden diese Anweisungen dann von der <em>datenbank.py</em> und <em>anzeigen.py</em> ausgeführt.</p>
+<h3 id="datenablage">Datenablage</h3>
+<p>Die Daten, die von der <em>datenbank.py</em> verarbeitet werden, liegen in dem Verzeichnis &quot;/data/&quot; und liegen im &quot;.json&quot; Format vor. Als Dateiname wird die jeweilige ID (abhängig von der Reihenfolge der Anmeldung) des Benutzers mit der Endung &quot;.json&quot; verwendet. In der &quot;letztes.json&quot; wird immer die zuletzt verwendete ID gespeichert, damit das System weiß, bis zu welcher ID Daten vorliegen.</p>
+<h3 id="api">API</h3>
+<p><strong>index</strong></p>
+<p>Stellt die Startseite der Absolventenfeier dar. Diese enthält eine Tabelle mit Anmeldungen und bietet die Möglichkeit diese zu bearbeiten.</p>
+<p><strong>ausschuss_app</strong></p>
+<p>Zeigt dem Prüfungsausschuss eine sortierte Liste mit Anmeldungen und bietet die Möglichkeit ein Abschlussthema zu bearbeiten.</p>
+<p><strong>hinzufuegen_app</strong></p>
+<p>Zugriff auf die <em>Bearbeiten-Funktion</em>, jedoch ohne einlesen vorhandener Daten. Wird genutzt um einen neuen Eintrag zu erstellen.</p>
+<p><strong>passwort_app</strong></p>
+<p>Passwort-Abfrage für die übergebene ID.</p>
+<p><strong>passwort_loeschen_app</strong></p>
+<p>Passwort-Abfrage zum Löschen der übergebenen ID.</p>
+<p><strong>bearbeiten_app</strong></p>
+<p>Möglichkeit Einträge in <em>inhalt_alle</em> zu verändern.</p>
+<p><strong>bearbeiten_ausschuss_app</strong></p>
+<p>Möglichkeit <em>Abschlussarbeit</em> in <em>inhalt_alle</em> hinzuzufügen, oder zu ändern.</p>
+<p><strong>speichern_app</strong></p>
+<p>Speichert übergebene Einträge in <em>inhalt_alle</em>. Danach wird Inhalt in .json gespeichert.</p>
+<p><strong>speichern_ausschuss_app</strong></p>
+<p>Speichert übergebenen Eintrag <em>Abschlussarbeit</em> in <em>inhalt_alle</em>. Danach wird Inhalt in .json gespeichert.</p>
+<p><strong>loeschen_app</strong></p>
+<p>Löscht übergebene ID, sofern das übergebene Passwort, mit dem in <em>inhalt_alle</em> gespeicherten.</p>
+<p><strong>fehler_app</strong></p>
+<p>Lässt Fehlermeldungen ausgeben.</p>
+</body>
+</html>

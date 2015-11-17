@@ -1,7 +1,6 @@
 # coding: utf-8
 
 import os.path
-
 from mako.template import Template
 from mako.lookup import TemplateLookup
 
@@ -14,19 +13,19 @@ class anzeigen_az(object):
 		self.path_s = 'template'
 		self.lookup_o = TemplateLookup(directories=['/'])
 ## --------------------------------------------------------------------##
-	
 
-	
+
+
 ## --------------------------------------------------------------------##
 ## Rendern der Internetseite
-## --------------------------------------------------------------------##	
+## --------------------------------------------------------------------##
 	def erzeugen_az(self, template_praktikum, content_var):
 		template_praktikum = Template(filename=os.path.join(self.path_s, template_praktikum), output_encoding='utf-8', lookup=self.lookup_o)
 		return template_praktikum.render(content = content_var)
 ## --------------------------------------------------------------------##
 
 
-		
+
 ## --------------------------------------------------------------------##
 ## Übergabe der Templates an den Renderer
 ## --------------------------------------------------------------------##	
@@ -39,5 +38,5 @@ class anzeigen_az(object):
 	def erzeugen_beitraege_az(self, content_var):
 		return self.erzeugen_az('beitraege.html', content_var)
 ## --------------------------------------------------------------------##
-		
+
 #EOF

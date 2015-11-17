@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+          Registrierung
+      </title>
+      <meta charset="UTF-8" />
+      <style type="text/css">
+         @import url("/template/template.css");
+      </style>
+   </head>
+   <body>
+      <h1 id="idSiteHeader" class="clSiteHeader">
+         Ihre Daten
+      </h1>
+      <form id="idForm" class="clContent" action="/speichern_ausschuss_app" method="POST">
+         <h2 id="idContentHeader" class="clContentHeader">
+            Das Formular ausfüllen/korrigieren und auf "speichern" klicken: 
+         </h2>
+         <div id="idContentArea" class="clContentArea">
+
+         <input type="hidden" value="${inhalt_alle['id']}" id="id_s" name="id_s" />
+       	<div class="clFormRow">
+            <label for="Vorname_s">Vorname</label>
+            <input type="text" value="${inhalt_alle['Vorname']}" id="Vorname_s" name="Vorname_s" />
+         </div>
+         <div class="clFormRow">
+            <label for="Nachname_s">Nachname</label>
+            <input type="text" value="${inhalt_alle['Nachname']}" id="Nachname_s" name="Nachname_s" />
+         </div>
+         <div class="clFormRow">
+            <label for="Gaeste_s">Anzahl der Begleitpersonen</label>
+            <input type="text" value="${inhalt_alle['Gaeste']}" id="Gaeste_s" name="Gaeste_s" />
+         </div>
+			<div class="clFormRow">
+            <label for="Studiengang_s">Studiengang</label>
+            <input type="text" value="${inhalt_alle['Studiengang']}" id="Studiengang_s" name="Studiengang_s" />
+         </div>
+			<div class="clFormRow">
+            <label for="Betreuer_s">Betreuer</label>
+            <input type="text" value="${inhalt_alle['Betreuer']}" id="Betreuer_s" name="Betreuer_s" />
+         </div>
+			<div class="clFormRow">
+            <label for="Kennwort_s">Kennwort</label>
+            <input type="password" value="${inhalt_alle['Passwort']}" id="Passwort_s" name="Passwort_s" />
+         </div>
+			<div class="clFormRow">
+            <label for="Matrikelnummer_s">Matrikelnummer</label>
+            <input type="text" value="${inhalt_alle['Matrikelnummer']}" id="Matrikelnummer_s" name="Matrikelnummer_s" />
+         </div>
+			<div class="clFormRow">
+            <label for="Abschlussarbeit_s">Abschlussarbeit</label>
+            <input type="text" value="${inhalt_alle['Abschlussarbeit']}" id="Abschlussarbeit_s" name="Abschlussarbeit_s" />
+         </div>
+         </div>
+         <div id="idButtonArea" class="clButtonArea">
+            <a href="/index" title="Zurück zur Startseite">Zurück</a>
+            <input type="submit" value="Speichern" />
+         </div>
+      </form>
+   </body>
+</html>

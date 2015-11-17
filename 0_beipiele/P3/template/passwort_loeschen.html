@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+          Registrierung
+      </title>
+      <meta charset="UTF-8" />
+      <style type="text/css">
+         @import url("/template/template.css");
+      </style>
+   </head>
+   <body>
+      <h1 id="idSiteHeader" class="clSiteHeader">
+         Passwortabfrage
+      </h1>
+      <form id="idForm" class="clContent" action="/loeschen_app" method="POST">
+         <h2 id="idContentHeader" class="clContentHeader">
+            Sie löschen mit diesem Schritt Ihre Daten aus der Datenbank!
+	    
+         </h2>
+	
+         <div id="idContentArea" class="clContentArea">
+
+         <input type="hidden" value="${inhalt_alle['id']}" id="id_s" name="id_s" />
+       	
+         <div class="clFormRow">
+            <label for="pw">Passwort</label>
+            <input type="text" value="" id="pw" name="pw" />
+         </div>
+        
+         </div>
+         <div id="idButtonArea" class="clButtonArea">
+            <a href="/index" title="Zurück zur Startseite">Zurück</a>
+            <input type="submit" value="Löschen" />
+         </div>
+      </form>
+   </body>
+</html>
