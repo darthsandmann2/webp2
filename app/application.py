@@ -22,7 +22,7 @@ class programm(object):
 
 
 	def themen(self, id):
-		return self.erzeugen_themen_app()
+		return self.erzeugen_themen_app(id)
 	themen.exposed = True
 
 
@@ -41,13 +41,20 @@ class programm(object):
 		self.datenbank_py.erstellen_themavz_db("test1")
 		self.datenbank_py.erstellen_themavz_db("test2")
 		self.datenbank_py.erstellen_themavz_db("test3")
+		self.datenbank_py.erstellen_diskussionvz_db("test1", "beitrag1")
+		self.datenbank_py.erstellen_diskussionvz_db("test1", "beitrag2")
+		self.datenbank_py.erstellen_diskussionvz_db("test1", "beitrag3")
+		self.datenbank_py.erstellen_diskussionvz_db("test3", "beitrag1")
+		self.datenbank_py.erstellen_diskussionvz_db("test3", "beitrag2")
+		self.datenbank_py.erstellen_diskussionvz_db("test2", "beitrag1")
+		self.datenbank_py.erstellen_diskussionvz_db("test2", "beitrag2")
 		## ----------- ##
 		
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)
 
-	def erzeugen_themen_app(self):
-		content = self.datenbank_py.lesen_diskussionvz_db()
+	def erzeugen_themen_app(self, id):
+		content = self.datenbank_py.lesen_diskussionvz_db(id)
 		return self.anzeigen_py.erzeugen_themen_az(content)
 
 	def erzeugen_beitraege_app(self):

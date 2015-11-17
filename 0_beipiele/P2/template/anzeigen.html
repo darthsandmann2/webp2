@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+          Absolventenfeier Main
+      </title>
+      <meta charset="UTF-8" />
+      <style type="text/css">
+         @import url("/template/template.css");
+      </style>
+   </head>
+   <body>
+      <h1 id="idSiteHeader" class="clSiteHeader">
+         Absolventenfeier 
+	  </h1>
+      <div id="idContent" class="clContent">
+         <h2 id="idContentHeader" class="clContentHeader">
+            Übersicht
+         </h2>
+         <div id="idContentArea" class="clContentArea">
+		
+			<table id="idList">
+				<tr>
+				<th>Vorname</th>
+				<th>Nachname</th>
+				<th>Anzahl der Begleitpersonen</th>
+				<th>Studiengang</th>
+				<th>Betreuer</th>
+				<th>Matrikelnr</th>
+				<th>&nbsp;</th></tr>
+				
+				% for var in inhalt_alle:
+				<tr>
+				
+								<td>${inhalt_alle[var]['Vorname']}</td>
+								<td>${inhalt_alle[var]['Nachname']}</td>
+								<td>${inhalt_alle[var]['Gaeste']}</td>
+								<td>${inhalt_alle[var]['Studiengang']}</td>
+								<td>${inhalt_alle[var]['Betreuer']}</td>
+								<td>${inhalt_alle[var]['Matrikelnummer']}</td>
+								<td>
+												<a href="/passwort_app/${var}">Bearbeiten</a> 
+												<a href="/passwort_loeschen_app/${var}">Löschen </a>
+								</td>
+				</tr> 
+				
+				% endfor
+				</table>
+         </div>
+         <div id="idButtonArea" class="clButtonArea">
+			
+			<a href="/hinzufuegen_app" class="clButton">Neuer Teilnehmer</a>
+			<a href="./Dokumentation.html" class="clButton">Dokumentation</a>
+			
+         </div>
+
+		
+      </div>
+   </body>
+</html>
