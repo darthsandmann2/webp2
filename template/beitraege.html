@@ -9,14 +9,16 @@
 		<div id="main">
 
 			<div class="top">
-				 Diskussionenuebersicht
+				 Beiträge
 			</div> 
 
 			<div class="content">
 
 				<div id="themen">
 					<table>
-						<th>Diskussionen</th>
+						% for var in content:
+						% endfor
+						<th>${content[var]['titel']}</th>
 							<tr>
 							% for var in content:
 								<tr id=${var}>

@@ -17,15 +17,15 @@
 				<div id="themen">
 					<table>
 						<th>Themen</th>
-							<tr>
 							% for var in content:
 							<tr id=${var}>
-								<td>
-									<td><a href="/themen/${content[var]}">${content[var]}</a></td>
-								</td>
+								<td>Thema: </br></td>
+								<td><a href="/themen/${content[var]['thema']}">${content[var]['thema']}</a></td>
+								<td>Vorhandene Eintraege:</td>
+								<td>${content[var]['eintraege']}</td>
 								<td>
 									<form method="post" action="/themen_loeschen" class="form">
-										<input type="hidden" value="${content[var]}" name="thema"></input>
+										<input type="hidden" value="${content[var]['thema']}" name="thema"></input>
 										<input type="submit" value="X"></input>
 									</form>
 								</td>
