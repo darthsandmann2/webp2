@@ -25,8 +25,8 @@
 										<td>${content[var]['zeit']}</td>
 										<td>
 											<form method="post" action="/beitrag_loeschen" class="form">
-												<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
-												<input type="hidden" value="${content[var]['Diskussion']}" name="diskussion"></input>
+												<input type="hidden" value="${content[var]['thema']}" name="thema"></input>
+												<input type="hidden" value="${content[var]['titel']}" name="diskussion"></input>
 												<input type="submit" value="X"></input>
 											</form>
 										</td>
@@ -44,9 +44,9 @@
 				Neuer Eintrag
 			
 				<form method="post" action="/diskussion_neu" class="form">
-					<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
+					<input type="hidden" value="${content[var]['thema']}" name="thema"></input>
 					<input type="text" value="Username" name="username"></input>
-					<input type="hidden" value=""${content[var]['Diskussion']}" name="diskussion"></input>
+					<input type="hidden" value="${content[var]['titel']}" name="diskussion"></input>
 					<input type="text" value="Inhalt" name="inhalt"></input>
 					<input type="submit" value="Neu"></input>
 				</form>

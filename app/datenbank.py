@@ -98,6 +98,7 @@ class datenbank_db(object):
 		for dateiname in ordner:
 			if dateiname.endswith('.json'):
 				id_int = int(dateiname[:-5])
+				id_int = id_int + 1
 				if id_int > id:
 					id = id_int
 		id_str = str(id) + '.json'
@@ -111,10 +112,9 @@ class datenbank_db(object):
 		ordner = os.listdir(pfad)
 		for dateiname in ordner:
 			if dateiname.endswith('.json'):
-				datei = codecs.open(os.path.join('data', thema, diskussion, dateiname), 'rU', 'utf-8')
+				datei = codecs.open(os.path.join('data', thema, diskussion, dateiname), 'r+', 'utf-8')
 				id = dateiname[:-5]
 				dateiinhalt = datei.read()
-				beitraege[id] = {}
 				beitraege[id] = json.loads(dateiinhalt)
 		return beitraege
 ## --------------------------------------------------------------------##		
