@@ -9,6 +9,12 @@ div{
 	display: block;
 }
 
+table{
+	border-collapse: collapse;
+
+}
+
+
 #main{
 		height: 100%;
 		
@@ -30,22 +36,30 @@ div{
 
 .content {
 	margin-top: 5%;
-	display: block;
-	float:left;
 }
 
+#themen table{
+	border: 1px solid black;
 
-#themen{
-	border-style:double dashed;
+
+}
+
+#themen table{
+	margin-top: 1%;
 }
 
 #themen tr{
-	display: block;
+	display: table-row;
 	font-size: 18px;
 	margin-top: 10px;
-	border-style: double; 		
+	border-style: double; 
+
 }
 
+.t {
+	text-align: left;
+	padding:15px;	 	
+}
 
 #themen a:link{
 	color: black;
@@ -59,18 +73,12 @@ div{
 
 }
 
-
-
-
 #new{
-	margin-top: 15%;
 	font-size: 20px;
 	padding-top: 15px;
-	margin-top: 50%;
-
 }
 
-
 #themen th{
-	font-size: 30px;	
+	font-size: 25px;	
+	padding: 15px;
 }
