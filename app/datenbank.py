@@ -25,6 +25,9 @@ class datenbank_db(object):
 		thema_dict = {}
 		pfad = os.path.join('data')
 		if not os.path.exists(pfad):
+			os.mkdir(os.path.join('data'))
+		pfad = os.path.join('data')
+		if not os.path.exists(pfad):
 			os.mkdir(os.path.join('data', thema))
 		i = 1
 		for f in os.listdir(pfad):
@@ -60,6 +63,9 @@ class datenbank_db(object):
 ## Verzeichnis verwalten
 ## --------------------------------------------------------------------##
 	def erstellen_themavz_db(self, thema):
+		pfad = os.path.join('data')
+		if not os.path.exists(pfad):
+			os.mkdir(os.path.join('data'))
 		pfad = os.path.join('data', thema)
 		if not os.path.exists(pfad):
 			os.mkdir(os.path.join('data', thema))
