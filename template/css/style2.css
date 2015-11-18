@@ -1,7 +1,7 @@
 ﻿body {
 	font-family: "Arial", Arial, sans-serif; 
 	font-size: 12pt;
-	margin: 3px, 10px;
+	
 }
 
 div{
@@ -27,6 +27,7 @@ div{
 
 
 
+
 .content {
 	margin-top: 5%;
 	display: block;
@@ -34,6 +35,35 @@ div{
 }
 
 
+#themen{
+
+}
+
+#themen a:link{
+	color: black;
+	text-decoration: none;
+
+}
+
+#themen a:visited{
+	color:black;
+	text-decoration: none;
+
+}
+
+
+#themen tr{
+	display: block;
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+
+#new{
+	margin-top: 15%;
+
+
+}
 
 
 #themen th{
