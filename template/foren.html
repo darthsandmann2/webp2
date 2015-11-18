@@ -11,7 +11,10 @@
 			<div class="top">
 				 Themenübersicht
 			</div> 
-
+			
+			<div class="nav">
+			<a href="index">User</a>
+			</div>
 			<div class="content">
 
 				<div id="themen">
@@ -27,7 +30,7 @@
 														
 								
 							<tr id=${var}>
-							<td class="t"><a href="/themen/${content[var]['thema']}">${content[var]['thema']}</a></td>
+							<td class=><a href="/themen/${content[var]['thema']}">${content[var]['thema']}</a></td>
 								<td class="t"> ${content[var]['eintraege']}</td>
 								<td class="t">
 									<form method="post" action="/themen_loeschen" class="form">

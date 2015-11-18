@@ -44,7 +44,15 @@ table{
 	font-size: 18px;
 	margin-top: 10px;
 	border-style: double; 
+		
 }
+
+#themen td{
+text-align: left;
+	padding:15px;	
+
+}
+
 
 .t {
 	text-align: left;
@@ -85,5 +93,28 @@ table{
 	font-size: 35px;
 	border: none;
 	border-radius: 60px; 
+
+}
+
+.nav a:link{
+	color: black;
+	text-decoration: none;
+	font-size: 50px;
+}
+
+.nav a:visited{
+	color:black;
+	text-decoration: none;
+	font-size: 50px;
+};
+
+
+
+.nav{
+	background-color: green;
+	margin:10px;
+	font-size: 50px;
+
+
 
 }

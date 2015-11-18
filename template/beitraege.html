@@ -14,6 +14,15 @@
 				 Beiträge
 			</div> 
 
+			<div class="nav">
+			<a href="/index">User</a>
+			<a href="/foren">Themenübersicht</a>
+			% for var in content:
+			% endfor
+			<a href="http://localhost:8080/themen/${content[var]['thema']}">Thema</a>
+			</div>
+			
+
 			<div class="content">
 
 				<div id="themen">
