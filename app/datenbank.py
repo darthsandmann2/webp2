@@ -124,4 +124,5 @@ class datenbank_db(object):
 		pfad = os.path.join('data', thema, diskussion, beitrag+'.json')
 		os.remove(pfad)
 ## --------------------------------------------------------------------##		
+
 #EOF
