@@ -9,37 +9,31 @@
 		<div id="main">
 
 			<div class="top">
-				 Userverwaltung
+				 Adminverwaltung
 			</div> 
-
-			<div class="nav">
-			<a href="foren">Forum</a>
-			</div>
-
 
 			<div class="content">
 
 				<div id="themen">
-					<p>Admin Login</p>
-					<form method="post" action="/admin" class="form">
-						<input type="text" value="username" name="username"</input>
-						<input type="text" value="passwort" name="passwort"</input>
-						<input type="submit" value="Login"></input>
-					</form>
-							<table>
+						
+						<table>
 							<tbody>
 								<tr>
 								<th>User</th>
 								<th>Rolle</th>
-								<th>Bearbeiten</th>
+								<th>Passwort</th>
+								<th>Speichern</th>
 							</tr>
 														
 							% for var in content:	
+							<form method="post" action="/user_bearbeiten/" class="form">
 							<tr id=${var}>
-							<td class="t">${content[var]['User']}</a></td>
-							<td class="t">${content[var]['Rolle']}</a></td>
-							<td class="t"><a href="/user_bearbeiten/${content[var]['User']}">Bearbeiten</a></td>
-							</tr>						
+							<td class="t"><input type="text" value="${content[var]['User']}" name="username"</input></a></td>
+							<td class="t"><input type="text" value="${content[var]['Rolle']}" name="rolle"</input></a></td>
+							<td class="t"><input type="text" value="${content[var]['Passwort']}" name="passwort"</input></a></td>
+							<td class="t"><input type="submit" value="Speichern"></input></a></td>
+							</tr>
+							</form>
 							% endfor
 							</tbody>
 							</table>
@@ -77,18 +71,7 @@
 								 $("body").append(formElement);
 								 $(formElement).submit();
 							} 
-					</script>
-				
-				
-				</div>
-				<div id="new">
-				<p>Neuer User</p>
-				
-					<form method="post" action="/user_neu" class="form">
-					<input type="text" value="username" name="username"</input>
-					<input type="text" value="passwort" name="passwort"</input>
-					<input type="submit" value="Neu"></input>
-					</form>
+					</script>	
 				</div>
 			</div>
 		</div>

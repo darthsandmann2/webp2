@@ -32,6 +32,9 @@ class anzeigen_az(object):
 	def erzeugen_index_az(self, content_var):
 		return self.erzeugen_az('index.html', content_var)
 		
+	def erzeugen_admin_az(self, content_var):
+		return self.erzeugen_az('admin.html', content_var)
+		
 	def erzeugen_foren_az(self, content_var):
 		return self.erzeugen_az('foren.html', content_var)
 		

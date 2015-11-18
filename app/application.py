@@ -20,14 +20,23 @@ class programm(object):
 		return self.erzeugen_index_app()
 	index.exposed = True
 	
+	def admin(self, **content):
+		user = content['username']
+		passwort = content['passwort']
+		return self.content_passwort_admin(user, passwort)
+	admin.exposed = True
+	
 	def user_neu(self, **content):
 		user = content['username']
 		passwort = content['passwort']
 		return self.content_user_neu(user, passwort)
 	user_neu.exposed = True
 		
-	def user_bearbeiten(self, user):
-		return 0
+	def user_bearbeiten(self, **content):
+		user = content['username']
+		rolle = content['rolle']
+		passwort = content['passwort']
+		return self.content_user_bearbeiten(user, rolle, passwort)
 	user_bearbeiten.exposed = True
 	
 	def foren(self):
@@ -46,6 +55,10 @@ class programm(object):
 		thema = content["thema"]
 		return self.content_themen_loeschen_app(thema)
 	themen_loeschen.exposed = True
+	
+	def beitraege(self, thema, diskussion):
+		return self.erzeugen_beitraege_app(thema, diskussion)
+	beitraege.exposed = True
 	
 	def beitrag_loeschen(self, **content):
 		thema = content["thema"]
@@ -68,10 +81,7 @@ class programm(object):
 		return self.content_diskussion_loeschen_app(thema, diskussion)
 	diskussion_loeschen.exposed = True
 	
-	def beitraege(self, thema, diskussion):
-		return self.erzeugen_beitraege_app(thema, diskussion)
-	beitraege.exposed = True
-		
+	
 ## --------------------------------------------------------------------##
 
 
@@ -82,6 +92,10 @@ class programm(object):
 	def erzeugen_index_app(self):
 		user = self.datenbank_py.lesen_user_db()
 		return self.anzeigen_py.erzeugen_index_az(user)
+		
+	def erzeugen_admin_app(self):
+		user = self.datenbank_py.lesen_user_db()
+		return self.anzeigen_py.erzeugen_admin_az(user)
 		
 	def erzeugen_foren_app(self):
 		content = self.datenbank_py.lesen_themavz_db()
@@ -103,7 +117,13 @@ class programm(object):
 ## --------------------------------------------------------------------##
 	def content_user_neu(self, user, passwort):
 		self.datenbank_py.erstellen_user_db(user, passwort)
+		user = self.datenbank_py.lesen_user_db()
+		return self.anzeigen_py.erzeugen_index_az(user)
 		
+	def content_user_bearbeiten(self, user, rolle, passwort):
+		self.datenbank_py.update_user_db(user, rolle, passwort)
+		user = self.datenbank_py.lesen_user_db()
+		return self.anzeigen_py.erzeugen_index_az(user)
 		
 	def content_themen_neu_app(self, thema):
 		self.datenbank_py.erstellen_themavz_db(thema)
@@ -130,6 +150,16 @@ class programm(object):
 		self.datenbank_py.loeschen_beitrag_db(thema, diskussion, beitrag)
 		content = self.datenbank_py.lesen_beitraege_db(thema, diskussion)
 		return self.anzeigen_py.erzeugen_beitraege_az(content)
+		
+	def content_passwort_admin(self, username_var, passwort_var):
+		user = self.datenbank_py.lesen_user_db()
+		if passwort_var == user[username_var]['Passwort']:
+			if user[username_var]['Rolle'] == '1':
+				return self.erzeugen_admin_app()
+			else:
+				return self.erzeugen_index_app()
+		else:
+			return self.erzeugen_index_app()
 ## --------------------------------------------------------------------##
 
 

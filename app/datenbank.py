@@ -33,13 +33,40 @@ class datenbank_db(object):
 			user['root']['User'] = "root"
 			user['root']['Passwort'] = "1234"
 			user['root']['Rolle'] = "1"
+			datei.seek(0)
 			datei.write(json.dumps(user, indent=3, ensure_ascii=True))
 			datei.close()
 		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
 		dateiinhalt = datei.read()
 		user = json.loads(dateiinhalt)
-		print (user)
+		datei.close()
 		return user
+		
+	def erstellen_user_db(self, user_var, passwort_var):
+		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
+		dateiinhalt = datei.read()
+		user = json.loads(dateiinhalt)
+		user[user_var] = {}
+		user[user_var]['User'] = user_var
+		user[user_var]['Passwort'] = passwort_var
+		user[user_var]['Rolle'] = "2"
+		datei.seek(0)
+		datei.write(json.dumps(user, indent=3, ensure_ascii=True))
+		datei.close()
+		
+	def update_user_db(self, user_var, rolle_var, passwort_var):
+		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
+		dateiinhalt = datei.read()
+		user = json.loads(dateiinhalt)
+		datei.close
+		datei = codecs.open(os.path.join('data', 'user.json'), 'w', 'utf-8')
+		del(user[user_var]['Rolle'])
+		user[user_var]['Rolle'] = rolle_var
+		del(user[user_var]['Passwort'])
+		user[user_var]['Passwort'] = passwort_var
+		datei.seek(0)
+		datei.write(json.dumps(user, indent=3, ensure_ascii=True))
+		datei.close()
 ## --------------------------------------------------------------------##
 
 
