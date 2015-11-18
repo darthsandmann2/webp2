@@ -1,0 +1,20 @@
+{
+   "WEB": {
+      "bezeichnung": "Web-Engineering",
+      "studiengang": "Bachelor Informatik",
+      "semester": 3,
+      "beschreibung": "Hier kann man einen Beschreibungstext vorsehen"
+      },
+   "IAS": {
+      "bezeichnung": "Interaktive Systeme",
+      "studiengang": "Bachelor Informatik",
+      "semester": 4,
+      "beschreibung": "Hier kann man einen Beschreibungstext vorsehen"
+      },
+   "SWE": {
+      "bezeichnung": "Software Engineering",
+      "studiengang": "Bachelor Informatik",
+      "semester": 5,
+      "beschreibung": "Hier kann man einen Beschreibungstext vorsehen"
+      }
+}
