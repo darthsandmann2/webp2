@@ -1,6 +1,8 @@
 ﻿<html>
 	<head>
-		<title>Forum XY</title>  
+		% for var in content:
+		% endfor	
+		<title>Diskussion: ${content[var]['titel']}</title>   
 		<link rel="stylesheet" type="text/css" href="/template/css/style2.css">
 		<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
 	</head>
@@ -18,13 +20,13 @@
 					<table>
 						% for var in content:
 						% endfor
-						<th>${content[var]['titel']}</th>
+						<tr><h1 class="heading">Beiträge zur Diskussion ${content[var]['titel']}</h1></tr>
 							<tr>
 							% for var in content:
 								<tr id=${var}>
 									<td>
-										<td>${content[var]['username']}</td>
-										<td>${content[var]['zeit']}</td>
+										<td><p>${content[var]['username']}</p></td>
+										<td><p>${content[var]['zeit']}</p>s</td>
 										<td>
 											<form method="post" action="/beitrag_loeschen" class="form">
 												<input type="hidden" value="${content[var]['thema']}" name="thema"></input>

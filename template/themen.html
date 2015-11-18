@@ -1,6 +1,8 @@
 ﻿<html>
 	<head>
-		<title>Forum XY</title>  
+		% for var in content:
+		% endfor
+		<title>Thema: ${content[var]['Thema']}</title>  
 		<link rel="stylesheet" type="text/css" href="/template/css/style2.css">
 		<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
 	</head>
@@ -16,16 +18,15 @@
 
 				<div id="themen">
 					<table>
-						% for var in content:
-						% endfor
-						<th>${content[var]['Thema']}</th>
-							<tr>
-							<tr></tr>
+						
+						<tbody>
+						<tr><h1 class="heading">${content[var]['Thema']}</h1></tr>
 							% for var in content:
-								<tr id=${var}>
+								<tr id=${var}>	
 									<td>
 										<td><a href="/beitraege/${content[var]['Thema']}/${content[var]['Diskussion']}">${content[var]['Diskussion']}</a></td>
 									</td>	
+									
 									<td>
 										<form method="post" action="/diskussion_loeschen" class="form">
 											<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
@@ -34,10 +35,14 @@
 										</form>
 									</td>
 								</tr>
-							% endfor
+							
+						</tbody>
+
+						% endfor	
 					</table>
-				</div>
 				
+				</div>
+				<div class="new">
 				Neuer Eintrag
 			
 				<form method="post" action="/diskussion_neu" class="form">
@@ -47,6 +52,8 @@
 					<input type="text" value="Inhalt" name="inhalt"></input>
 					<input type="submit" value="Neu"></input>
 				</form>
+			
+				</div>					
 			</div>
 		</div>
 	</body>
