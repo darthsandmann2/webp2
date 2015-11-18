@@ -24,10 +24,12 @@ class programm(object):
 		user = content['username']
 		passwort = content['passwort']
 		return self.content_user_neu(user, passwort)
+	user_neu.exposed = True
 		
 	def user_bearbeiten(self, user):
 		return 0
-		
+	user_bearbeiten.exposed = True
+	
 	def foren(self):
 		return self.erzeugen_foren_app()
 	foren.exposed = True
@@ -80,6 +82,7 @@ class programm(object):
 	def erzeugen_index_app(self):
 		user = self.datenbank_py.lesen_user_db()
 		return self.anzeigen_py.erzeugen_index_az(user)
+		
 	def erzeugen_foren_app(self):
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)
@@ -98,6 +101,10 @@ class programm(object):
 ## --------------------------------------------------------------------##
 ## Content verarbeiten
 ## --------------------------------------------------------------------##
+	def content_user_neu(self, user, passwort):
+		self.datenbank_py.erstellen_user_db(user, passwort)
+		
+		
 	def content_themen_neu_app(self, thema):
 		self.datenbank_py.erstellen_themavz_db(thema)
 		content = self.datenbank_py.lesen_themavz_db()
