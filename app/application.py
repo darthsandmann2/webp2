@@ -20,6 +20,14 @@ class programm(object):
 		return self.erzeugen_index_app()
 	index.exposed = True
 	
+	def user_neu(self, **content):
+		user = content['username']
+		passwort = content['passwort']
+		return self.content_user_neu(user, passwort)
+		
+	def user_bearbeiten(self, user):
+		return 0
+		
 	def foren(self):
 		return self.erzeugen_foren_app()
 	foren.exposed = True
@@ -70,8 +78,8 @@ class programm(object):
 ## Webpages verarbeiten
 ## --------------------------------------------------------------------##
 	def erzeugen_index_app(self):
-		content = self.datenbank_py.lesen_user_db()
-		return self.anzeigen_py.erzeugen_index_az(content)
+		user = self.datenbank_py.lesen_user_db()
+		return self.anzeigen_py.erzeugen_index_az(user)
 	def erzeugen_foren_app(self):
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)

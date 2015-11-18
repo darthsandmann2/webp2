@@ -30,6 +30,7 @@ class datenbank_db(object):
 		if not os.path.isfile(pfad):
 			datei = codecs.open(os.path.join('data', 'user.json'), 'w', 'utf-8')
 			user['root'] = {}
+			user['root']['User'] = "root"
 			user['root']['Passwort'] = "1234"
 			user['root']['Rolle'] = "1"
 			datei.write(json.dumps(user, indent=3, ensure_ascii=True))
