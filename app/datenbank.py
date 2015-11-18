@@ -59,8 +59,7 @@ class datenbank_db(object):
 			diskussion_dict['keine'] = {}
 			diskussion_dict['keine']['Thema'] = thema
 			diskussion_dict['keine']['Diskussion'] = "keine"
-		print (diskussion_dict)
-		return diskussion_dict
+		return OrderedDict(sorted(diskussion_dict.items(), key=lambda t: t[0]))
 ## --------------------------------------------------------------------##
 		
 
