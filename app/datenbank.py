@@ -32,12 +32,18 @@ class datenbank_db(object):
 		i = 1
 		for f in os.listdir(pfad):
 			if os.path.isdir(os.path.join(pfad, f)):
-				thema_dict[i] = f
+				thema_dict[var] = {}
+				j = 0
+				thema_dict[i]['thema'] = f
+				for f in os.listdir(pfad+'/'+f):
+					j = j+1
+				thema_dict[i]['eintraege'] = j
 				i = i+1
 		if i == 1:
-			thema_dict['keine'] = 'keine'
-		print (thema_dict)
-		return thema_dict
+			thema_dict['keine'] = {}
+			thema_dict['keine']['keine'] = 'keine'
+			thema_dict['keine']['eintraege'] = 0
+		return OrderedDict(sorted(thema_dict.items(), key=lambda t: t[0]))
 			
 	def lesen_diskussionvz_db(self, thema):
 		diskussion_dict = {}
