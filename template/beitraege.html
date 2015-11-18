@@ -35,7 +35,8 @@
 								<tr id=${var}>
 									<td>
 										<td><p>${content[var]['username']}</p></td>
-										<td><p>${content[var]['zeit']}</p>s</td>
+										<td><p>${content[var]['zeit']}</p></td>
+										<td><p>${content[var]['inhalt']}</p></td>
 										<td>
 											<form method="post" action="/beitrag_loeschen" class="form">
 												<input type="hidden" value="${content[var]['thema']}" name="thema"></input>
@@ -45,16 +46,12 @@
 											</form>
 										</td>
 									</td>	
-								</tr>
-								<tr>									
-									<td>
-										<td>${content[var]['inhalt']}</td>
-									</td>
 								</tr>	
 							% endfor
 					</table>
 				</div>
 				
+				<div class="new">
 				Neuer Eintrag
 			
 				<form method="post" action="/diskussion_neu" class="form">
@@ -64,6 +61,7 @@
 					<input type="text" value="Inhalt" name="inhalt"></input>
 					<input type="submit" value="Neu"></input>
 				</form>
+				</div>
 			</div>
 		</div>
 	</body>
