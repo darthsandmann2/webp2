@@ -17,22 +17,32 @@ class programm(object):
 ## Zugriffe
 ## --------------------------------------------------------------------##
 	def index(self):
-		return self.erzeugen_foren_app()
+		return self.erzeugen_index_app()
 	index.exposed = True
-
-
+	
+	def foren(self):
+		return self.erzeugen_foren_app()
+	foren.exposed = True
+	
 	def themen(self, thema):
 		return self.erzeugen_themen_app(thema)
 	themen.exposed = True
-
-
-	def beitraege(self, thema, diskussion):
-		return self.erzeugen_beitraege_app(thema, diskussion)
-	beitraege.exposed = True
 	
 	def themen_neu(self, thema):
 		return self.content_themen_neu_app(thema)
 	themen_neu.exposed = True
+	
+	def themen_loeschen(self, **content):
+		thema = content["thema"]
+		return self.content_themen_loeschen_app(thema)
+	themen_loeschen.exposed = True
+	
+	def beitrag_loeschen(self, **content):
+		thema = content["thema"]
+		diskussion = content["diskussion"]
+		beitrag = content["beitrag"]
+		return self.content_beitrag_loeschen_app(thema, diskussion, beitrag)
+	beitrag_loeschen.exposed = True
 	
 	def diskussion_neu(self, **content):
 		thema = content["thema"]
@@ -42,22 +52,16 @@ class programm(object):
 		return self.content_diskussion_neu_app(thema, diskussion, username, inhalt)
 	diskussion_neu.exposed = True
 	
-	def themen_loeschen(self, thema):
-		return self.content_themen_loeschen_app(thema)
-	themen_loeschen.exposed = True
-	
 	def diskussion_loeschen(self, **content):
 		thema = content["thema"]
 		diskussion = content["diskussion"]
 		return self.content_diskussion_loeschen_app(thema, diskussion)
 	diskussion_loeschen.exposed = True
 	
-	def beitrag_loeschen(self, **content):
-		thema = content["thema"]
-		diskussion = content["diskussion"]
-		beitrag = content["beitrag"]
-		return self.content_beitrag_loeschen_app(thema, diskussion, beitrag)
-	beitrag_loeschen.exposed = True
+	def beitraege(self, thema, diskussion):
+		return self.erzeugen_beitraege_app(thema, diskussion)
+	beitraege.exposed = True
+		
 ## --------------------------------------------------------------------##
 
 
@@ -65,6 +69,9 @@ class programm(object):
 ## --------------------------------------------------------------------##
 ## Webpages verarbeiten
 ## --------------------------------------------------------------------##
+	def erzeugen_index_app(self):
+		content = self.datenbank_py.lesen_user_db()
+		return self.anzeigen_py.erzeugen_index_az(content)
 	def erzeugen_foren_app(self):
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)

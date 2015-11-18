@@ -19,6 +19,31 @@ class datenbank_db(object):
 
 
 ## --------------------------------------------------------------------##
+## Benutzerverwaltung
+## --------------------------------------------------------------------##
+	def lesen_user_db(self):
+		user = {}
+		pfad = os.path.join('data')
+		if not os.path.exists(pfad):
+			os.mkdir(os.path.join('data'))
+		pfad = os.path.join('data', 'user.json')
+		if not os.path.isfile(pfad):
+			datei = codecs.open(os.path.join('data', 'user.json'), 'w', 'utf-8')
+			user['root'] = {}
+			user['root']['Passwort'] = "1234"
+			user['root']['Rolle'] = "1"
+			datei.write(json.dumps(user, indent=3, ensure_ascii=True))
+			datei.close()
+		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
+		dateiinhalt = datei.read()
+		user = json.loads(dateiinhalt)
+		print (user)
+		return user
+## --------------------------------------------------------------------##
+
+
+
+## --------------------------------------------------------------------##
 ## Verzeichnis auslesen
 ## --------------------------------------------------------------------##
 	def lesen_themavz_db(self):
@@ -26,7 +51,6 @@ class datenbank_db(object):
 		pfad = os.path.join('data')
 		if not os.path.exists(pfad):
 			os.mkdir(os.path.join('data'))
-		pfad = os.path.join('data')
 		if not os.path.exists(pfad):
 			os.mkdir(os.path.join('data', thema))
 		i = 1
