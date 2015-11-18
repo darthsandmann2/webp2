@@ -1,0 +1,43 @@
+﻿<html>
+	<head>
+		<title>Startseite</title>  
+		<link rel="stylesheet" type="text/css" href="/template/css/style2.css">
+		<script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+	</head>
+
+	<body>
+		<div id="main">
+
+			<div class="top">
+				 Userverwaltung
+			</div> 
+
+			<div class="content">
+
+				<div id="themen">
+						
+						<table>
+							<tbody>
+								<tr>
+								<th>User</th>
+								<th>Rolle</th>
+								<th>Passwort</th>
+								<th>Speichern</th>
+								<th>Loeschen</th>
+							</tr>
+							${content}							
+							<form method="post" action="/user_bearbeiten/" class="form">
+								<tr>
+								<td class="t"><input type="hidden" value="${content['User']}" name="username"</input>${content['User']}</a></td>
+								<td class="t"><input type="hidden" value="${content['Rolle']}" name="rolle"</input>${content['Rolle']}</a></td>
+								<td class="t"><input type="text" value="${content['Passwort']}" name="passwort"</input></a></td>
+								<td class="t"><input type="submit" value="Speichern"></input></a></td>
+							</form>
+							<td class="t"><a href="/user_loeschen/${content['User']}" class="form">X</a></td>
+							</tbody>
+							</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

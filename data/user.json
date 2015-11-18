@@ -1,12 +1,7 @@
 {
    "root": {
-      "Passwort": "1234",
       "Rolle": "1",
-      "User": "root"
-   },
-   "username": {
-      "Rolle": "2",
-      "Passwort": "1234",
-      "User": "username"
+      "User": "root",
+      "Passwort": "1234"
    }
 }

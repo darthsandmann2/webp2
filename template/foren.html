@@ -26,9 +26,7 @@
 								<th>Thema</th>
 								<th>Beiträge</th>
 								<th>löschen</th>
-							</tr>
-														
-								
+							</tr>	
 							<tr id=${var}>
 							<td class=><a href="/themen/${content[var]['thema']}">${content[var]['thema']}</a></td>
 								<td class="t"> ${content[var]['eintraege']}</td>
@@ -84,7 +82,9 @@
 				<p>Neuer Eintrag</p>
 				
 					<form method="post" action="/themen_neu" class="form">
-					<input type="text" value="" name="thema"</input>
+					<input type="text" value="username" name="username"</input>
+					<input type="text" value="passwort" name="passwort"</input>
+					<input type="text" value="thema" name="thema"</input>
 					<input type="submit" value="Neu"></input>
 					</form>
 				</div>

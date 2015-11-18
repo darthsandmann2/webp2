@@ -22,25 +22,26 @@ class datenbank_db(object):
 ## Benutzerverwaltung
 ## --------------------------------------------------------------------##
 	def lesen_user_db(self):
-		user = {}
 		pfad = os.path.join('data')
 		if not os.path.exists(pfad):
 			os.mkdir(os.path.join('data'))
 		pfad = os.path.join('data', 'user.json')
 		if not os.path.isfile(pfad):
 			datei = codecs.open(os.path.join('data', 'user.json'), 'w', 'utf-8')
+			user = {}
 			user['root'] = {}
 			user['root']['User'] = "root"
 			user['root']['Passwort'] = "1234"
 			user['root']['Rolle'] = "1"
 			datei.seek(0)
 			datei.write(json.dumps(user, indent=3, ensure_ascii=True))
-			datei.close()
+			datei.close()	
 		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
 		dateiinhalt = datei.read()
 		user = json.loads(dateiinhalt)
+		user = OrderedDict(sorted(user.items(), key=lambda t: t[0]))
 		datei.close()
-		return user
+		return  user
 		
 	def erstellen_user_db(self, user_var, passwort_var):
 		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
@@ -58,13 +59,21 @@ class datenbank_db(object):
 		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
 		dateiinhalt = datei.read()
 		user = json.loads(dateiinhalt)
-		datei.close
-		datei = codecs.open(os.path.join('data', 'user.json'), 'w', 'utf-8')
 		del(user[user_var]['Rolle'])
 		user[user_var]['Rolle'] = rolle_var
 		del(user[user_var]['Passwort'])
 		user[user_var]['Passwort'] = passwort_var
 		datei.seek(0)
+		datei.write(json.dumps(user, indent=3, ensure_ascii=True))
+		datei.close()
+		
+	def loeschen_user_db(self, id):
+		pfad = os.path.join('data', 'user.json')
+		datei = codecs.open(os.path.join('data', 'user.json'), 'r+', 'utf-8')
+		dateiinhalt = datei.read()
+		user = json.loads(dateiinhalt)
+		datei.close
+		del(user[id])
 		datei.write(json.dumps(user, indent=3, ensure_ascii=True))
 		datei.close()
 ## --------------------------------------------------------------------##

@@ -15,7 +15,7 @@
 			</div> 
 
 			<div class="nav">
-			<a href="/index">User</a>
+			<a href="/index">User|</a>
 			<a href="/foren">Themenübersicht</a>
 			</div>
 			
@@ -53,6 +53,7 @@
 				<form method="post" action="/diskussion_neu" class="form">
 					<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
 					<input type="text" value="Username" name="username"></input>
+					<input type="text" value="Passwort" name="passwort"></input>
 					<input type="text" value="Titel" name="diskussion"></input>
 					<input type="text" value="Inhalt" name="inhalt"></input>
 					<input type="submit" value="Neu"></input>
