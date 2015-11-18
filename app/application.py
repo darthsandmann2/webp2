@@ -51,6 +51,13 @@ class programm(object):
 		diskussion = content["diskussion"]
 		return self.content_diskussion_loeschen_app(thema, diskussion)
 	diskussion_loeschen.exposed = True
+	
+	def beitrag_loeschen(self, **content):
+		thema = content["thema"]
+		diskussion = content["diskussion"]
+		beitrag = content["beitrag"]
+		return self.content_beitrag_loeschen_app(thema, diskussion, beitrag)
+	beitrag_loeschen.exposed = True
 ## --------------------------------------------------------------------##
 
 
@@ -81,21 +88,26 @@ class programm(object):
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)
 		
+	def content_themen_loeschen_app(self, thema):
+		self.datenbank_py.loeschen_themavz_db(thema)
+		content = self.datenbank_py.lesen_themavz_db()
+		return self.anzeigen_py.erzeugen_foren_az(content)
+
 	def content_diskussion_neu_app(self, thema, diskussion, username, inhalt):
 		self.datenbank_py.erstellen_diskussionvz_db(thema, diskussion)
 		self.datenbank_py.erstellen_beitrag_db(thema, diskussion, username, inhalt)
 		content = self.datenbank_py.lesen_beitraege_db(thema, diskussion)
 		return self.anzeigen_py.erzeugen_beitraege_az(content)
-		
-	def content_themen_loeschen_app(self, thema):
-		self.datenbank_py.loeschen_themavz_db(thema)
-		content = self.datenbank_py.lesen_themavz_db()
-		return self.anzeigen_py.erzeugen_foren_az(content)
-		
+	
 	def content_diskussion_loeschen_app(self, thema, diskussion):
 		self.datenbank_py.loeschen_diskussionvz_db(thema, diskussion)
 		content = self.datenbank_py.lesen_diskussionvz_db(thema)
-		return self.anzeigen_py.erzeugen_themen_az(content)
+		return self.anzeigen_py.erzeugen_themen_az(content)		
+	
+	def content_beitrag_loeschen_app(self, thema, diskussion, beitrag):
+		self.datenbank_py.loeschen_beitrag_db(thema, diskussion, beitrag)
+		content = self.datenbank_py.lesen_beitraege_db(thema, diskussion)
+		return self.anzeigen_py.erzeugen_beitraege_az(content)
 ## --------------------------------------------------------------------##
 
 

@@ -6,6 +6,7 @@ import codecs
 import json
 import time
 import shutil
+from collections import OrderedDict
 
 
 class datenbank_db(object):
@@ -108,6 +109,7 @@ class datenbank_db(object):
 	
 	def lesen_beitraege_db(self, thema, diskussion):
 		beitraege = {}
+		beitraege_sorted = {}
 		pfad = os.path.join('data', thema, diskussion)
 		ordner = os.listdir(pfad)
 		for dateiname in ordner:
@@ -116,6 +118,10 @@ class datenbank_db(object):
 				id = dateiname[:-5]
 				dateiinhalt = datei.read()
 				beitraege[id] = json.loads(dateiinhalt)
-		return beitraege
+		return OrderedDict(sorted(beitraege.items(), key=lambda t: t[0]))
+		
+	def loeschen_beitrag_db(self, thema, diskussion, beitrag):
+		pfad = os.path.join('data', thema, diskussion, beitrag+'.json')
+		os.remove(pfad)
 ## --------------------------------------------------------------------##		
 #EOF
