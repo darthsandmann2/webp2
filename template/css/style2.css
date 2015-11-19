@@ -99,13 +99,13 @@ text-align: left;
 .nav a:link{
 	color: black;
 	text-decoration: none;
-	font-size: 50px;
+	font-size: 35px;
 }
 
 .nav a:visited{
 	color:black;
 	text-decoration: none;
-	font-size: 50px;
+	font-size: 35px;
 };
 
 
@@ -113,7 +113,7 @@ text-align: left;
 .nav{
 	background-color: green;
 	margin:10px;
-	font-size: 50px;
+	font-size: 35px;
 
 
 
