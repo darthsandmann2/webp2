@@ -15,7 +15,7 @@
 			<div class="nav">
 			<nav>
 				<ul>
-					<a href="account">User</a>
+					<li><a href="account">User</a></li>
 				</ul>
 			</nav>
 			</div>
@@ -24,14 +24,15 @@
 
 				<div id="themen">
 					
-						% for var in content:
+						
 						<table>
 							<tbody>
 							<tr>
 								<th>Thema</th>
 								<th>Beiträge</th>
 								<th>löschen</th>
-							</tr>	
+							</tr>
+							% for var in content:	
 							<tr id=${var}>
 							<td class=><a href="/themen/${content[var]['thema']}">${content[var]['thema']}</a></td>
 								<td class="t"> ${content[var]['eintraege']}</td>
@@ -42,10 +43,10 @@
 									</form>
 								</td>
 							</tr>						
-							
+							% endfor
 							</tbody>
 							</table>
-							% endfor
+							
 					
 				    
 
@@ -83,8 +84,8 @@
 				
 				
 				</div>
-				<div id="new">
-				<p>Neuer Eintrag</p>
+				<div class="new">
+				<h2>Neuer Eintrag</h2>
 				
 					<form method="post" action="/themen_neu" class="form">
 					<input type="text" value="username" name="username"</input>
