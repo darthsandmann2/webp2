@@ -110,16 +110,30 @@ class datenbank_db(object):
 		diskussion_dict = {}
 		pfad = os.path.join('data', thema)
 		i = 1
+		## Directory auflisten
 		for f in os.listdir(pfad):
 			if os.path.isdir(os.path.join(pfad, f)):
+				j = 0
+				## Eintraege in der jeweiligen Diskussion
+				for g in os.listdir(pfad+'/'+f):
+					j = j+1
+				datei = codecs.open(os.path.join('data', thema, f, g), 'r', 'utf-8')
+				dateiinhalt = datei.read()
+				beitrag = json.loads(dateiinhalt)
 				diskussion_dict[f] = {}
 				diskussion_dict[f]['Diskussion'] = f
 				diskussion_dict[f]['Thema'] = thema
+				diskussion_dict[f]['Beitraege'] = j
+				diskussion_dict[f]['User'] = beitrag['username']
+				diskussion_dict[f]['Zeit'] = beitrag['zeit']
 				i = i+1
 		if i == 1:
 			diskussion_dict['keine'] = {}
 			diskussion_dict['keine']['Thema'] = thema
-			diskussion_dict['keine']['Diskussion'] = "keine"
+			diskussion_dict['keine']['Diskussion'] = "leer"
+			diskussion_dict['keine']['Beitraege'] = "leer"
+			diskussion_dict['keine']['User'] = "leer"
+			diskussion_dict['keine']['Zeit'] = "leer"
 		return OrderedDict(sorted(diskussion_dict.items(), key=lambda t: t[0]))
 ## --------------------------------------------------------------------##
 		
