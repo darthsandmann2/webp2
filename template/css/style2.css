@@ -27,7 +27,14 @@ table{
 	text-align: center;
 	font-size: 40px;
 	border: none;
-	border-radius: 60px; 	 
+	border-radius: 60px; 	
+	margin-top: 0;	 
+}
+
+.top ul li {
+
+	margin-top: 0;
+
 }
 
 .content {
@@ -115,6 +122,8 @@ table{
 	background-color: #81DAF5;
 	font-size: 30px;
 	text-align: center;
+	border: none;
+	border-radius: 60px; 
 }
 
 .nav ul li{
