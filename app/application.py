@@ -61,7 +61,6 @@ class programm(object):
 	themen_neu.exposed = True
 	
 	def themen_loeschen(self, **content):
-		print("yooooooo")
 		username = content["username"]
 		passwort = content["passwort"]
 		thema = content["thema"]
@@ -204,7 +203,6 @@ class programm(object):
 		return self.anzeigen_py.erzeugen_foren_az(content)
 		
 	def content_themen_loeschen_app(self, thema, username_var, passwort_var):
-		print("yooooooo")
 		check = self.passwort_check_admin(username_var, passwort_var)
 		if check == 1:
 			self.datenbank_py.loeschen_themavz_db(thema)
