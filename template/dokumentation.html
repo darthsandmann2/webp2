@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="dokumentation-web-praktikum-19.11.15">Dokumentation WEB Praktikum: 19.11.15</h2>
+<h2 id="gruppe-b-kai-wansart-philipp-hansen">Gruppe B: Kai Wansart, Philipp Hansen</h2>
+<h2 id="allgemeine-beschreibung-der-lösung">Allgemeine Beschreibung der Lösung</h2>
+<p>Das Praktikum 2 ist in <em>Python</em> geschrieben und nutzt das Framework <em>CherryPy</em>, mit welchem eine Website zur Verwendung erzeugt wird.</p>
+<p>Dieser Server läuft mit einer Datenbank, welche Informationen via des Python-Moduls <em>json</em> in Dateien abspeichern und auslesen kann.</p>
+<p>Die Website wird durch ein Template erzeugt, welches durch die Template-Engine <em>mako</em> umgesetzt wird, wodurch Daten aus der Datenbank ausgeben werden können.</p>
+<h2 id="beschreibung-der-komponenten">Beschreibung der Komponenten</h2>
+<h2 id="zweck">Zweck</h2>
+<p>Die Website erzeugt ein Forum, in welchem mehrere Themen angezeigt werden können, mit beliebige vielen Diskussionen pro Thema, die dann wiederum beliebig viele Beiträge enthalten können.</p>
+<h2 id="aufbau">Aufbau</h2>
+<p><strong>Server.py</strong></p>
+<p>Die <em>server.py</em> liefert den Startpunkt des ganzen Projektes und stellt uns eine Website zu verfügung, die mit Hilfe des <em>CherryPy-Frameworks</em> erzeugt wurde.</p>
+<p><strong>application.py</strong></p>
+<p>Die <em>application.py</em> leitet Anfragen, die durch die Website, welche durch das <em>CherryPy-Framework</em> erzeugt wurde, an die anderen Module weiter.</p>
+<p><strong>datenbank.py</strong></p>
+<p>Die <em>datenbank.py</em> stellt den Speicher des Systems dar. Sie dient als Schnittstelle, um Daten abzuspeichern, verändern, oder zu löschen.</p>
+<p><strong>anzeigen.py</strong></p>
+<p>Die <em>anzeigen.py</em> generiert die Templates, welche benötigt werden, um die Informationen auf der Website anzuzeigen. Um dies zu ermöglichen wird die <em>mako-Engine</em> verwendet.</p>
+<h3 id="zusammenwirken-der-komponenten">Zusammenwirken der Komponenten</h3>
+<p>Durch die <em>server.py</em> werden die Anfragen durch das <em>CherryPy-Framework</em> erkannt und weitergeleitet an die <em>application.py</em> Die <em>application.py</em> verarbeitet die Anfragen und gibt Anweisungen an die <em>datenbank.py</em> und <em>anzeigen.py</em> was mit diesen geschehen soll. Im folgenden werden diese Anweisungen dann von der <em>datenbank.py</em> und <em>anzeigen.py</em> ausgeführt.</p>
+<h2 id="api">API</h2>
+<ul>
+<li>index(self)</li>
+<li>login(self, **content)</li>
+<li>user_neu(self, **content)</li>
+<li>user_bearbeiten(self, **content)</li>
+<li>user_loeschen(self, id)</li>
+<li>account(self)</li>
+<li>themen(self, thema)</li>
+<li>themen_neu(self, **content)</li>
+<li>themen_loeschen(self, **content)</li>
+<li>beitraege(self, thema, diskussion)</li>
+<li>beitrag_loeschen(self, **content)</li>
+<li>diskussion_neu(self, **content)</li>
+<li>diskussion_loeschen(self, **content)</li>
+</ul>
+<h2 id="datenablage">Datenablage</h2>
+<p>Die Daten, die von der <em>datenbank.py</em> verarbeitet werden, liegen in dem Verzeichnis &quot;/data/&quot; und liegen im &quot;.json&quot; Format vor.</p>
+</body>
+</html>

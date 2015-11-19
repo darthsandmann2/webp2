@@ -1,0 +1,77 @@
+##Dokumentation WEB Praktikum: 19.11.15 
+##Gruppe B: Kai Wansart, Philipp Hansen
+
+
+
+##Allgemeine Beschreibung der Lösung
+
+Das Praktikum 2 ist in *Python* geschrieben und nutzt das Framework *CherryPy*, mit welchem eine Website zur
+Verwendung erzeugt wird.
+
+Dieser Server läuft mit einer Datenbank, welche Informationen via des Python-Moduls *json* in Dateien abspeichern
+und auslesen kann.
+
+Die Website wird durch ein Template erzeugt, welches durch die Template-Engine *mako* umgesetzt wird, wodurch
+Daten aus der Datenbank ausgeben werden können.
+
+
+
+##Beschreibung der Komponenten
+
+##Zweck
+
+Die Website erzeugt ein Forum, in welchem mehrere Themen angezeigt werden können, mit beliebige vielen Diskussionen pro Thema, die dann wiederum beliebig viele Beiträge enthalten können. 
+
+
+##Aufbau
+
+**Server.py**
+
+Die *server.py* liefert den Startpunkt des ganzen Projektes und stellt uns eine Website zu verfügung, die mit Hilfe des *CherryPy-Frameworks* erzeugt wurde.
+
+
+
+**application.py** 
+
+Die *application.py* leitet Anfragen, die durch die Website, welche durch das *CherryPy-Framework* erzeugt wurde,
+an die anderen Module weiter.
+ 
+
+
+**datenbank.py**
+
+Die *datenbank.py* stellt den Speicher des Systems dar. Sie dient als Schnittstelle, um Daten abzuspeichern, verändern, oder zu löschen.
+
+
+**anzeigen.py**
+
+Die *anzeigen.py* generiert die Templates, welche benötigt werden, um die Informationen auf der Website anzuzeigen.
+Um dies zu ermöglichen wird die *mako-Engine* verwendet.
+
+
+###Zusammenwirken der Komponenten
+
+Durch die *server.py* werden die Anfragen durch das *CherryPy-Framework* erkannt und weitergeleitet an die *application.py*
+Die *application.py* verarbeitet die Anfragen und gibt Anweisungen an die *datenbank.py* und *anzeigen.py* was mit diesen geschehen soll.
+Im folgenden werden diese Anweisungen dann von der *datenbank.py* und *anzeigen.py* ausgeführt.
+
+##API
+
+- index(self)
+- login(self, **content)
+- user_neu(self, **content)
+- user_bearbeiten(self, **content)
+- user_loeschen(self, id)
+- account(self)
+- themen(self, thema)
+- themen_neu(self, **content)
+- themen_loeschen(self, **content)
+- beitraege(self, thema, diskussion)
+- beitrag_loeschen(self, **content)
+- diskussion_neu(self, **content)
+- diskussion_loeschen(self, **content)
+
+
+##Datenablage
+
+Die Daten, die von der *datenbank.py* verarbeitet werden, liegen in dem Verzeichnis "/data/" und liegen im ".json" Format vor.
