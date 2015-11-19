@@ -28,16 +28,21 @@
 			
 
 			<div class="content">
-
+				% for var in content:
+						% endfor
+						<h1 class="heading">Beiträge zur Diskussion ${content[var]['titel']}</h1>
 				<div id="themen">
 					<table>
-						% for var in content:
-						% endfor
-						<tr><h1 class="heading">Beiträge zur Diskussion ${content[var]['titel']}</h1></tr>
+						
+							<tr>
+								<th>User</th>
+								<th>Erstellungszeit</th>
+								<th>Inhalt</th>
+								<th>Löschen</th>
+						</tr>
 							<tr>
 							% for var in content:
 								<tr id=${var}>
-									<td>
 										<td><p>${content[var]['username']}</p></td>
 										<td><p>${content[var]['zeit']}</p></td>
 										<td><p>${content[var]['inhalt']}</p></td>
@@ -48,8 +53,7 @@
 												<input type="hidden" value="${var}" name="beitrag"></input>
 												<input type="submit" value="X"></input>
 											</form>
-										</td>
-									</td>	
+										</td>	
 								</tr>	
 							% endfor
 					</table>

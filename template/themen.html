@@ -24,21 +24,24 @@
 			</div>
 			
 			<div class="content">
-
+				<h1 class="heading">${content[var]['Thema']}</h1>
 				<div id="themen">
 					<table>
-						
+						<tr>
+								<th>Diskussion</th>
+								<th>Beiträge</th>
+								<th>Ersteller</th>
+								<th>Letzter Beitrag</th>
+								<th>Löschen</th>
+						</tr>
 						<tbody>
-						<tr><h1 class="heading">${content[var]['Thema']}</h1></tr>
+							
 							% for var in content:
 								<tr id=${var}>	
-									<td>
 										<td><a href="/beitraege/${content[var]['Thema']}/${content[var]['Diskussion']}">${content[var]['Diskussion']}</a></td>
 										<td><a>${content[var]['Beitraege']}</a></td>
 										<td><a>${content[var]['User']}</a></td>
-										<td><a>${content[var]['Zeit']}</a></td>
-									</td>	
-									
+										<td><a>${content[var]['Zeit']}</a></td>	
 									<td>
 										<form method="post" action="/diskussion_loeschen" class="form">
 											<input type="hidden" value="${content[var]['Thema']}" name="thema"></input>
