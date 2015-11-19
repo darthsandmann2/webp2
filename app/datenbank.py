@@ -120,11 +120,16 @@ class datenbank_db(object):
 				datei = codecs.open(os.path.join('data', thema, f, g), 'r', 'utf-8')
 				dateiinhalt = datei.read()
 				beitrag = json.loads(dateiinhalt)
+				datei.close
+				datei = codecs.open(os.path.join('data', thema, f, '0.json'), 'r', 'utf-8')
+				dateiinhalt = datei.read()
+				beitrag_a = json.loads(dateiinhalt)
+				datei.close
 				diskussion_dict[f] = {}
 				diskussion_dict[f]['Diskussion'] = f
 				diskussion_dict[f]['Thema'] = thema
 				diskussion_dict[f]['Beitraege'] = j
-				diskussion_dict[f]['User'] = beitrag['username']
+				diskussion_dict[f]['User'] = beitrag_a['username']
 				diskussion_dict[f]['Zeit'] = beitrag['zeit']
 				i = i+1
 		if i == 1:
