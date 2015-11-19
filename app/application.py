@@ -160,21 +160,21 @@ class programm(object):
 		if check == 2:
 			return self.erzeugen_user_app(username_var)
 		if check == 0:
-			return self.erzeugen_index_app()
+			return self.erzeugen_account_app()
 			
 	def content_passwort_admin(self, username_var, passwort_var):
 		check = self.passwort_check_admin(username_var, passwort_var)
 		if check == 1:
 			return self.erzeugen_admin_app()
 		else:
-			return self.erzeugen_index_app()
+			return self.erzeugen_account_app()
 			
 	def content_passwort_user(self, username_var, passwort_var):
 		check = self.passwort_check(username_var, passwort_var)
 		if check == 1:
 			return self.erzeugen_user_app(username_var)
 		else:
-			return self.erzeugen_index_app()
+			return self.erzeugen_account_app()
 
 	## User
 	def content_user_neu(self, user, passwort):
