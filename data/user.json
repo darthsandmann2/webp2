@@ -1,7 +1,27 @@
 {
+   "Beispiel User 4": {
+      "Rolle": "2",
+      "Passwort": "1234",
+      "User": "Beispiel User 4"
+   },
+   "Beispiel User 2": {
+      "Rolle": "2",
+      "Passwort": "1234",
+      "User": "Beispiel User 2"
+   },
    "root": {
       "Rolle": "1",
-      "User": "root",
-      "Passwort": "1234"
+      "Passwort": "1234",
+      "User": "root"
+   },
+   "Beispiel User 1": {
+      "Rolle": "2",
+      "Passwort": "1234",
+      "User": "Beispiel User 1"
+   },
+   "Beispiel User 3": {
+      "Rolle": "2",
+      "Passwort": "1234",
+      "User": "Beispiel User 3"
    }
 }

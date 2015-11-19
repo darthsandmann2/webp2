@@ -180,7 +180,7 @@ class programm(object):
 	def content_user_neu(self, user, passwort):
 		self.datenbank_py.erstellen_user_db(user, passwort)
 		user = self.datenbank_py.lesen_user_db()
-		return self.anzeigen_py.erzeugen_index_az(user)
+		return self.anzeigen_py.erzeugen_account_az(user)
 		
 	def content_user_bearbeiten(self, user, rolle, passwort):
 		self.datenbank_py.update_user_db(user, rolle, passwort)
