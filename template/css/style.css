@@ -1,148 +1,140 @@
-/* template.css */
-
-/* allgemeine Vorgaben */
-body {
-   font-family: "Open Sans", sans-serif;
-   font-size: 12pt;
-
-   padding: 0;
-   margin: 0;
+﻿body {
+	font-family: "Arial", Arial, sans-serif; 
+	font-size: 12pt;
+	margin-top: 5px;
 }
 
-/* Basislayout */
+div{
 
-.clSiteHeader {
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   height: 100px;
-   line-height: 100px;
-   margin: 0;
-   padding: 5px;
-   font-size: 40pt;
-   text-align: center;
-   text-shadow:black 3px 2px;
-   font-family: cursive, fantasy;
-   color: #920B19;
-   background-color: #B6B6B7;
+	display: block;
 }
 
-.clContent {
-   position: absolute;
-   top: 110px;  /* height, padding, border, margin von idSiteHeader beachten */
-   left: 0;
-   right: 0;
-   bottom: 0;
-   margin: 0;
-   padding: 5px;
+table{
+	border-collapse: collapse;
 }
 
-/* Elemente im Content-Bereich */
 
-.clContentHeader {
-   position: absolute;
-   top: 20px;
-   left: 0;
-   right: 0;
-   height: 30px;
-   line-height: 30px;
-   margin: 0;
-   padding: 5px;
-   font-size: 18pt;
-   text-align: center;
+#main{
+		height: 100%;
 }
 
-.clContentArea {
-   position: absolute;
-   top: 80px; /* height, padding, border, margin von idContentHeader beachten */
-   left: 0;
-   right: 0;
-   bottom: 40px;  /* height, padding, border, margin von idButtonArea beachten */
-   margin: 10px 0;
-   margin-left: 10px;
-   padding: 5px;
+.top {
+	background-color: #A4A4A4;
+	height: 60px;
+	padding: 5px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	font-size: 40px;
+	border: none;
+	border-radius: 60px; 	
+	margin-top: 0;	 
 }
 
-.clButtonArea {
-   position: absolute;
-   left: 0;
-   right: 0;
-   /*float: left; width: 10px:*/
-   bottom: 0;
-   height: 80px;
-   line-height: 80px;
-   margin: 0;
-   padding: 5px;
-   text-align: center;
-   background-color: #B6B6B7;
+
+.content {
+	margin-top: 5%;
 }
 
-/* Links und Submit-Schalter im Buttonbereich gestalten */
+#themen table{
+	border: 1px solid black;
+	margin: auto;
+	table-layout: fixed;
+	width: auto;
 
-.clButtonArea a, input[type="submit"] {
-   margin: 0 5px;
-   padding: 3px 6px;
-   font-size: 14pt;
-   text-decoration: none;
-   border: 2px solid;
-   color: black;
-   background-color: buttonface;
+
 }
 
-/* unterschiedliche Kennzeichnungen je nach Bedienung vermeiden */
+#themen tr{
+	display: table-row;
+	font-size: 18px;
+	margin-top: 5px;
+	border-style: double; 	
 
-.clButtonArea a:hover, a:visited, a:active {
-   color: black;
 }
 
-/* Gestaltung von Tabellen */
+#themen td{
+	padding:15px;	
+	text-align: left;
 
-#idList {
-   table-layout: fixed;
-   width: auto;
-   border: 2px solid;
-   border-collapse: collapse;
-   margin:auto;
 }
 
-#idList th {
-   text-align: center;
-   padding-left: 5px;
-   background-color: #FFFFFF;
+
+.t {
+	text-align: left;
+	padding:15px;	 	
 }
 
-#idList th, #idList td {
-   padding: 3px;
-   border: 2px solid;
+#themen a:link{
+	color: black;
+	text-decoration: none;
+
 }
 
-/* Gestaltung von Formularen */
+#themen a:visited{
+	color:black;
+	text-decoration: none;
 
-/* das Formular nochmals zusätzlich gestalten */
-#idForm .clContentArea {
-   width: 500px;
-   margin: auto;
+};
+
+#themen th{
+	font-size: 25px;	
+	padding: 1%;
+	text-align: left;
 }
 
-.clFormRow {
-   position: relative; /* damit das Element in jedem Fall "positioniert" ist und damit als Bezugspunkt geeignet ist */
-   height: 30px;
-   margin-bottom: 10px;
+.new{
+	font-size: 20px;
+	padding-top: 15px;
+	background-color: #A4A4A4;
+	margin-top: 5%;
+	
 }
 
-.clFormRow label {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 240px;
-   text-align: center;
+
+.heading{
+
+	background-color: #A4A4A4;
+	text-align: center;
+	font-size: 35px;
+	border: none;
+	border-radius: 60px; 
+
 }
 
-.clFormRow input {
-   position: absolute;
-   top: 0;
-   left: 250px;
-   width: 250px;
+.nav a:link{
+	color: black;
+	text-decoration: none;
+	font-size: 35px;
+	text-align: center;
+
 }
-/* EOF */
+
+.nav a:visited{
+	color:black;
+	text-decoration: none;
+	font-size: 35px;
+	text-align: center;
+
+}
+
+ 
+.nav{
+	background-color: #81DAF5;
+	font-size: 30px;
+	text-align: center;
+	border: none;
+	border-radius: 60px; 
+}
+
+.nav ul li{
+	list-style-type: none;
+    display:inline-block;
+
+}
+
+.nav ul li{
+	list-style-type: none;
+    display:inline-block;
+
+}

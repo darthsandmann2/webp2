@@ -1,27 +1,32 @@
 {
    "Beispiel User 4": {
+      "User": "Beispiel User 4",
       "Rolle": "2",
-      "Passwort": "1234",
-      "User": "Beispiel User 4"
+      "Passwort": "1234"
    },
    "Beispiel User 2": {
+      "User": "Beispiel User 2",
       "Rolle": "2",
-      "Passwort": "1234",
-      "User": "Beispiel User 2"
-   },
-   "root": {
-      "Rolle": "1",
-      "Passwort": "1234",
-      "User": "root"
-   },
-   "Beispiel User 1": {
-      "Rolle": "2",
-      "Passwort": "1234",
-      "User": "Beispiel User 1"
+      "Passwort": "1234"
    },
    "Beispiel User 3": {
+      "User": "Beispiel User 3",
       "Rolle": "2",
-      "Passwort": "1234",
-      "User": "Beispiel User 3"
+      "Passwort": "1234"
+   },
+   "Hansen": {
+      "User": "Hansen",
+      "Rolle": "2",
+      "Passwort": "1234"
+   },
+   "Beispiel User 1": {
+      "User": "Beispiel User 1",
+      "Rolle": "2",
+      "Passwort": "1234"
+   },
+   "root": {
+      "User": "root",
+      "Rolle": "1",
+      "Passwort": "1234"
    }
 }
