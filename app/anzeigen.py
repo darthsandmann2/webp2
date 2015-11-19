@@ -29,8 +29,8 @@ class anzeigen_az(object):
 ## --------------------------------------------------------------------##
 ## Übergabe der Templates an den Renderer
 ## --------------------------------------------------------------------##	
-	def erzeugen_index_az(self, content_var):
-		return self.erzeugen_az('index.html', content_var)
+	def erzeugen_account_az(self, content_var):
+		return self.erzeugen_az('account.html', content_var)
 		
 	def erzeugen_admin_az(self, content_var):
 		return self.erzeugen_az('admin.html', content_var)

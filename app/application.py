@@ -16,11 +16,9 @@ class programm(object):
 ## --------------------------------------------------------------------##
 ## Zugriffe
 ## --------------------------------------------------------------------##
-	## ----------------------------------------------------------------##
 	## Userverwaltung
-	## ----------------------------------------------------------------##
 	def index(self):
-		return self.erzeugen_index_app()
+		return self.erzeugen_foren_app()
 	index.exposed = True
 	
 	def login(self, **content):
@@ -45,14 +43,11 @@ class programm(object):
 	def user_loeschen(self, id):
 		return self.content_user_loeschen_app(id)
 	user_loeschen.exposed = True
-	## ----------------------------------------------------------------##
 	
-	## ----------------------------------------------------------------##
 	## Themen
-	## ----------------------------------------------------------------##
-	def foren(self):
-		return self.erzeugen_foren_app()
-	foren.exposed = True
+	def account(self):
+		return self.erzeugen_account_app()
+	account.exposed = True
 	
 	def themen(self, thema):
 		return self.erzeugen_themen_app(thema)
@@ -69,11 +64,8 @@ class programm(object):
 		thema = content["thema"]
 		return self.content_themen_loeschen_app(thema)
 	themen_loeschen.exposed = True
-	## ----------------------------------------------------------------##
 	
-	## ----------------------------------------------------------------##
 	## Diskussion
-	## ----------------------------------------------------------------##
 	def beitraege(self, thema, diskussion):
 		return self.erzeugen_beitraege_app(thema, diskussion)
 	beitraege.exposed = True
@@ -99,8 +91,6 @@ class programm(object):
 		diskussion = content["diskussion"]
 		return self.content_diskussion_loeschen_app(thema, diskussion)
 	diskussion_loeschen.exposed = True
-	## ----------------------------------------------------------------##
-	
 ## --------------------------------------------------------------------##
 
 
@@ -108,12 +98,11 @@ class programm(object):
 ## --------------------------------------------------------------------##
 ## Webpages verarbeiten
 ## --------------------------------------------------------------------##
-	def erzeugen_index_app(self):
+	def erzeugen_account_app(self):
 		user = self.datenbank_py.lesen_user_db()
-		return self.anzeigen_py.erzeugen_index_az(user)
+		return self.anzeigen_py.erzeugen_account_az(user)
 		
 	def erzeugen_user_app(self, username_var):
-		print(username_var)
 		user = self.datenbank_py.lesen_user_db()
 		print(user[username_var])
 		return self.anzeigen_py.erzeugen_user_az(user[username_var])
@@ -140,9 +129,7 @@ class programm(object):
 ## --------------------------------------------------------------------##
 ## Content verarbeiten
 ## --------------------------------------------------------------------##
-	## ----------------------------------------------------------------##
 	## Passwörter
-	## ----------------------------------------------------------------##
 	def passwort_check(self, username_var, passwort_var):
 		user = self.datenbank_py.lesen_user_db()
 		if not user.get(username_var) == None:
@@ -188,11 +175,8 @@ class programm(object):
 			return self.erzeugen_user_app(username_var)
 		else:
 			return self.erzeugen_index_app()
-	## ----------------------------------------------------------------##
 
-	## ----------------------------------------------------------------##
 	## User
-	## ----------------------------------------------------------------##
 	def content_user_neu(self, user, passwort):
 		self.datenbank_py.erstellen_user_db(user, passwort)
 		user = self.datenbank_py.lesen_user_db()
@@ -207,11 +191,8 @@ class programm(object):
 		self.datenbank_py.loeschen_user_db(id)
 		user = self.datenbank_py.lesen_user_db()
 		return self.anzeigen_py.erzeugen_index_az(user)
-	## ----------------------------------------------------------------##
 	
-	## ----------------------------------------------------------------##
 	## Themen
-	## ----------------------------------------------------------------##
 	def content_themen_neu_app(self, username_var, passwort_var, thema):
 		check = self.passwort_check_admin(username_var, passwort_var)
 		if check == 1:
@@ -223,11 +204,8 @@ class programm(object):
 		self.datenbank_py.loeschen_themavz_db(thema)
 		content = self.datenbank_py.lesen_themavz_db()
 		return self.anzeigen_py.erzeugen_foren_az(content)
-	## ----------------------------------------------------------------##
 	
-	## ----------------------------------------------------------------##
 	## Diskussion
-	## ----------------------------------------------------------------##
 	def content_diskussion_neu_app(self, thema, diskussion, username_var, passwort_var, inhalt):
 		check = self.passwort_check(username_var, passwort_var)
 		if check == 1:
@@ -248,20 +226,5 @@ class programm(object):
 		self.datenbank_py.loeschen_beitrag_db(thema, diskussion, beitrag)
 		content = self.datenbank_py.lesen_beitraege_db(thema, diskussion)
 		return self.anzeigen_py.erzeugen_beitraege_az(content)
-## --------------------------------------------------------------------##
-
-
-
-## --------------------------------------------------------------------##
-## Fehlerausgabe
-## --------------------------------------------------------------------##
-	def fehler_app(self, *arguments, **kwargs):
-		msg_s = "Fehler: " + \
-			str(arguments) + \
-			' ' + \
-			str(kwargs)
-		raise cherrypy.HTTPError(404, msg_s)
-	
-	fehler_app.exposed = True
 ## --------------------------------------------------------------------##
 #EOF
