@@ -36,50 +36,35 @@
 							<td class=><a href="/themen/${content[var]['thema']}">${content[var]['thema']}</a></td>
 								<td class="t"> ${content[var]['eintraege']}</td>
 								<td class="t">
-									<form method="post" action="/themen_loeschen" class="form">
-										<input type="hidden" value="${content[var]['thema']}" name="thema"></input>
-										<input type="submit" value="X"></input>
+									<form>
+										<input type="button" value="X" onClick="myFunction()">
 									</form>
 								</td>
 							</tr>						
 							% endfor
 							</tbody>
 							</table>
-							
-					
-				    
 
-
-
-				    <script type="text/javascript">
-						$('#idList tr').click(function(){
-							var cid = $(this).attr('id');
-							##alert(cid);
-							myFunction(cid);
-
-
-						 });
-
-					</script>
-					<script>
-						function myFunction(cid) {
-						   
-							var person = prompt("Bitte geben Sie ihr Passwort ein:", "");
-							var y = new String("")+person;
-							##alert(person+ cid+ y);
-							var formString = '<form method="post" action="/bearbeiten_app">';
-								formString += '<input type="hidden" value="';
-								formString += cid;
-								formString += '" id="id_s" name="id_s" />';
-								formString += '<input type="hidden" value='
-								formString += y
-								formString +=' pw="pw" name="pw" />';
-								##alert (formString);
-							var formElement = $(formString);
-								 $("body").append(formElement);
-								 $(formElement).submit();
-							} 
-					</script>
+							<script type="text/javascript" language="JavaScript">
+								function myFunction() {
+									var user = prompt("Bitte geben Sie Benutzernamen ein:", "");
+									var passwort = prompt("Bitte geben Sie Passwort ein:", "");
+									alert(user + passwort);
+									var formString = '<form method="post" action="/themen_loeschen" class="form">';
+										formString += '<input type="hidden" value="${content[var]['thema']}" name="thema" />'
+										formString += '<input type="hidden" value="'
+										formString += user
+										formString += '" name="username" />';
+										formString += '<input type="hidden" value="'
+										formString += passwort
+										formString += '" name="passwort" />';
+										formString += '</form>';
+										alert (formString);
+									var formElement = $(formString);
+										 $("body").append(formElement);
+										 $(formElement).submit();
+									} 
+							</script>
 				
 				
 				</div>
